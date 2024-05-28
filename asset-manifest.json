@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/sultan/static/css/main.f3beb914.chunk.css",
-    "main.js": "/sultan/static/js/main.ab59f2ed.chunk.js",
-    "main.js.map": "/sultan/static/js/main.ab59f2ed.chunk.js.map",
+    "main.css": "/sultan/static/css/main.b08aee00.chunk.css",
+    "main.js": "/sultan/static/js/main.b3067dc6.chunk.js",
+    "main.js.map": "/sultan/static/js/main.b3067dc6.chunk.js.map",
     "runtime-main.js": "/sultan/static/js/runtime-main.960f6063.js",
     "runtime-main.js.map": "/sultan/static/js/runtime-main.960f6063.js.map",
     "static/js/2.d787a9d3.chunk.js": "/sultan/static/js/2.d787a9d3.chunk.js",
     "static/js/2.d787a9d3.chunk.js.map": "/sultan/static/js/2.d787a9d3.chunk.js.map",
     "index.html": "/sultan/index.html",
-    "static/css/main.f3beb914.chunk.css.map": "/sultan/static/css/main.f3beb914.chunk.css.map",
+    "static/css/main.b08aee00.chunk.css.map": "/sultan/static/css/main.b08aee00.chunk.css.map",
     "static/js/2.d787a9d3.chunk.js.LICENSE.txt": "/sultan/static/js/2.d787a9d3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.960f6063.js",
     "static/js/2.d787a9d3.chunk.js",
-    "static/css/main.f3beb914.chunk.css",
-    "static/js/main.ab59f2ed.chunk.js"
+    "static/css/main.b08aee00.chunk.css",
+    "static/js/main.b3067dc6.chunk.js"
   ]
 }
