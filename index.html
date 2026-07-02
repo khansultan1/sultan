@@ -1,1 +1,298 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content="Portfolio"/><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet"><title>Sultan Khan</title><link href="/sultan/static/css/main.b08aee00.chunk.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script>!function(e){function t(t){for(var n,l,a=t[0],f=t[1],i=t[2],c=0,s=[];c<a.length;c++)l=a[c],Object.prototype.hasOwnProperty.call(o,l)&&o[l]&&s.push(o[l][0]),o[l]=0;for(n in f)Object.prototype.hasOwnProperty.call(f,n)&&(e[n]=f[n]);for(p&&p(t);s.length;)s.shift()();return u.push.apply(u,i||[]),r()}function r(){for(var e,t=0;t<u.length;t++){for(var r=u[t],n=!0,a=1;a<r.length;a++){var f=r[a];0!==o[f]&&(n=!1)}n&&(u.splice(t--,1),e=l(l.s=r[0]))}return e}var n={},o={1:0},u=[];function l(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,l),r.l=!0,r.exports}l.m=e,l.c=n,l.d=function(e,t,r){l.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},l.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},l.t=function(e,t){if(1&t&&(e=l(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(l.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var n in e)l.d(r,n,function(t){return e[t]}.bind(null,n));return r},l.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return l.d(t,"a",t),t},l.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},l.p="/sultan/";var a=this.webpackJsonpsultan_portfolio=this.webpackJsonpsultan_portfolio||[],f=a.push.bind(a);a.push=t,a=a.slice();for(var i=0;i<a.length;i++)t(a[i]);var p=f;r()}([])</script><script src="/sultan/static/js/2.d787a9d3.chunk.js"></script><script src="/sultan/static/js/main.b3067dc6.chunk.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sultan Khan | Software Architect & UX Advocate</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+        :root {
+            --bg: #0a0a0a;
+            --card: rgba(255, 255, 255, 0.03);
+            --primary: #00f2ea;
+            --secondary: #ff0050;
+            --text: #ffffff;
+            --text-dim: #888888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Custom Cursor UX */
+        .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; border-radius: 50%; transform: translate(-50%, -50%); }
+        .cursor-dot { width: 6px; height: 6px; background: var(--primary); }
+        .cursor-outline { width: 40px; height: 40px; border: 1.5px solid rgba(0, 242, 234, 0.5); transition: transform 0.1s ease-out, width 0.3s, height 0.3s, border-color 0.3s; }
+        .cursor-outline.hover-grow { width: 60px; height: 60px; border-color: var(--secondary); background: rgba(255, 0, 80, 0.1); }
+        @media (max-width: 768px) { .cursor-dot, .cursor-outline { display: none; } body { cursor: auto; } }
+        @media (min-width: 769px) { body { cursor: none; } a, button { cursor: none; } }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed; z-index: -1; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(0, 242, 234, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 80, 0.08) 0%, transparent 40%),
+                #0a0a0a;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 20px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            backdrop-filter: blur(12px); background: rgba(10, 10, 10, 0.6);
+            border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 100;
+        }
+        .logo { font-weight: 800; font-size: 24px; color: var(--text); text-decoration: none; }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 10%; }
+        .hero h1 { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .hero h1 span { background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); font-family: 'Fira Code', monospace; min-height: 30px; }
+        .typed-text { color: var(--primary); }
+        .hero-btns { margin-top: 40px; display: flex; gap: 20px; }
+        .btn { padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: 0.3s; border: 1px solid transparent; }
+        .btn-primary { background: var(--primary); color: #000; }
+        .btn-outline { border-color: var(--text-dim); color: var(--text); }
+        .btn-primary:hover { box-shadow: 0 0 20px rgba(0, 242, 234, 0.5); transform: translateY(-3px); }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+        /* Sections & Reveal Animation */
+        .section { padding: 100px 10%; }
+        .section-title { font-size: 2.5rem; margin-bottom: 50px; font-weight: 700; text-align: center; }
+        .section-title span { color: var(--primary); }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* 3D Tilt Glassmorphism Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; perspective: 1000px; }
+        .card {
+            background: var(--card); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.08); border-radius: 20px;
+            padding: 30px; transition: transform 0.2s ease-out, border-color 0.3s;
+            position: relative; overflow: hidden; transform-style: preserve-3d;
+        }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            opacity: 0; transition: 0.3s;
+        }
+        .card:hover { border-color: rgba(255,255,255,0.2); }
+        .card:hover::before { opacity: 1; }
+        .card h3 { font-size: 1.5rem; margin-bottom: 10px; color: var(--text); transform: translateZ(30px); }
+        .card p { color: var(--text-dim); margin-bottom: 20px; font-size: 0.95rem; transform: translateZ(20px); }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; transform: translateZ(40px); }
+        .tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; color: var(--primary); font-family: 'Fira Code', monospace; }
+
+        /* Other Projects List */
+        .other-projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .mini-project { display: flex; flex-direction: column; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; transition: 0.3s; text-decoration: none; }
+        .mini-project:hover { background: rgba(0, 242, 234, 0.03); border-color: rgba(0, 242, 234, 0.2); transform: translateY(-5px); }
+        .mini-project h4 { color: var(--text); font-size: 1.1rem; margin-bottom: 5px; }
+        .mini-project span { color: var(--text-dim); font-size: 0.85rem; font-family: 'Fira Code', monospace; }
+        .mini-project .arrow { margin-top: 15px; color: var(--primary); font-size: 1.2rem; transition: transform 0.3s; }
+        .mini-project:hover .arrow { transform: translateX(10px); }
+
+        /* Footer */
+        footer { text-align: center; padding: 50px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-dim); font-size: 0.9rem; }
+        footer a { color: var(--primary); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .other-projects-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div class="bg-animation"></div>
+
+    <nav>
+        <a href="#" class="logo">&lt;Sultan.<span>Khan</span> /&gt;</a>
+        <ul class="nav-links">
+            <li><a href="#projects">Work</a></li>
+            <li><a href="#other">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="https://medium.com/@khansultan1" target="_blank">Blog</a></li>
+            <li><a href="mailto:khansultan1@gmail.com">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1>Building the Future.<br>Code that <span>Cares.</span></h1>
+        <p>I am a <span class="typed-text" id="typed"></span></p>
+        <div class="hero-btns">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="https://github.com/khansultan1" target="_blank" class="btn btn-outline">GitHub</a>
+        </div>
+    </div>
+
+    <div class="section" id="projects">
+        <h2 class="section-title reveal">Featured <span>Work</span></h2>
+        <div class="grid">
+            <div class="card reveal">
+                <h3>Dr. Sulaiman Al Habib Suite</h3>
+                <p>Enterprise-grade healthcare ecosystem managing patient appointments, physician EMRs, and internal HR workflows. Built for high scale, speed, and strict data security.</p>
+                <div class="tech-stack">
+                    <span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Node.js</span><span class="tag">WebSockets</span>
+                </div>
+            </div>
+            <div class="card reveal">
+                <h3>Access Health International</h3>
+                <p>Global health initiative app focusing on offline-first architectures and data synchronization for field workers operating in low-connectivity environments.</p>
+                <div class="tech-stack">
+                    <span class="tag">Flutter</span><span class="tag">SQLite</span><span class="tag">Sync Logic</span>
+                </div>
+            </div>
+            <div class="card reveal">
+                <h3>Sports Infographics Engine</h3>
+                <p>Real-time sports data visualization platform handling massive traffic spikes during live events with optimized DOM manipulation and asynchronous data handling.</p>
+                <div class="tech-stack">
+                    <span class="tag">JavaScript</span><span class="tag">Vue.js</span><span class="tag">REST APIs</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="other">
+        <h2 class="section-title reveal">Other Notable <span>Projects</span></h2>
+        <div class="other-projects-grid">
+            <a href="https://github.com/khansultan1" target="_blank" class="mini-project reveal">
+                <h4>Ibadah App</h4>
+                <span>Non-profit Islamic prayer tracking app (Flutter, 2024)</span>
+                <div class="arrow">↗</div>
+            </a>
+            <a href="https://github.com/khansultan1" target="_blank" class="mini-project reveal">
+                <h4>RTM Mealtime Monitoring</h4>
+                <span>Real-time tracking & reporting solution (IONIC, Node.js)</span>
+                <div class="arrow">↗</div>
+            </a>
+            <a href="https://github.com/khansultan1" target="_blank" class="mini-project reveal">
+                <h4>Worldline Merchant Portal</h4>
+                <span>High-volume transaction portal & mobile app (Angular, IONIC)</span>
+                <div class="arrow">↗</div>
+            </a>
+            <a href="https://github.com/khansultan1" target="_blank" class="mini-project reveal">
+                <h4>Race Lance</h4>
+                <span>Handicapping horses dynamic visualization (JavaScript)</span>
+                <div class="arrow">↗</div>
+            </a>
+            <a href="http://namastetourism.com" target="_blank" class="mini-project reveal">
+                <h4>Namaste Tourism</h4>
+                <span>High-converting tourism web platform (HTML5, CSS3, JS)</span>
+                <div class="arrow">↗</div>
+            </a>
+            <a href="http://codefficient.com" target="_blank" class="mini-project reveal">
+                <h4>Codefficient</h4>
+                <span>Corporate tech consultancy website (Vue.js, jQuery)</span>
+                <div class="arrow">↗</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="section" id="skills">
+        <h2 class="section-title reveal">Technical <span>Arsenal</span></h2>
+        <div class="grid">
+            <div class="card reveal">
+                <h3>Mobile & Architecture</h3>
+                <p>Expert in building natively compiled applications with a focus on maintainable, scalable architecture (MVVM).</p>
+                <div class="tech-stack">
+                    <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">MVVM</span><span class="tag">Provider</span><span class="tag">IONIC</span>
+                </div>
+            </div>
+            <div class="card reveal">
+                <h3>Backend & Cloud</h3>
+                <p>Designing robust server-side logic, real-time WebSockets, and database schemas to support high-traffic apps.</p>
+                <div class="tech-stack">
+                    <span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">MySQL</span><span class="tag">CI/CD</span>
+                </div>
+            </div>
+            <div class="card reveal">
+                <h3>AI Era Integration</h3>
+                <p>Leveraging modern AI APIs, LLM integrations, and prompt engineering to build intelligent, future-ready features.</p>
+                <div class="tech-stack">
+                    <span class="tag">OpenAI APIs</span><span class="tag">AI Debugging</span><span class="tag">Automation</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Designed & Coded with 💙 by Sultan Khan</p>
+        <p>Riyadh, Saudi Arabia | <a href="mailto:khansultan1@gmail.com">khansultan1@gmail.com</a></p>
+    </footer>
+
+    <script>
+        // 1. Typing Animation
+        const texts = ["Senior Software Engineer.", "Flutter Expert.", "AI-Enthusiast.", "UX/UI Advocate."];
+        let count = 0, index = 0, currentText = '', letter = '';
+        (function type() {
+            if (count === texts.length) count = 0;
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+            document.getElementById('typed').textContent = letter;
+            if (letter.length === currentText.length) {
+                setTimeout(() => { index = 0; count++; type(); }, 2000);
+            } else {
+                setTimeout(type, 100);
+            }
+        })();
+
+        // 2. Custom Cursor UX
+        const dot = document.querySelector('.cursor-dot');
+        const outline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', e => {
+            dot.style.left = e.clientX + 'px';
+            dot.style.top = e.clientY + 'px';
+            outline.style.left = e.clientX + 'px';
+            outline.style.top = e.clientY + 'px';
+        });
+        document.querySelectorAll('a, .card, .btn').forEach(el => {
+            el.addEventListener('mouseenter', () => outline.classList.add('hover-grow'));
+            el.addEventListener('mouseleave', () => outline.classList.remove('hover-grow'));
+        });
+
+        // 3. Scroll Reveal Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 4. 3D Tilt Effect on Cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
