@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sultan Khan — Senior Flutter Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12201C;
+    --paper:#EFF1EC;
+    --paper-dim:#E3E6DF;
+    --teal:#1F5C4E;
+    --teal-bright:#2E8C74;
+    --teal-glow:rgba(46,140,116,0.18);
+    --signal:#E2A33D;
+    --coral:#D65A45;
+    --line:#C7CCC5;
+    --white:#FBFCFA;
+    --ink-black:#0B140F;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'IBM Plex Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.6;overflow-x:hidden;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  ::selection{background:var(--teal-bright);color:var(--white);}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:60;background:rgba(239,241,236,0.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:var(--font-mono);font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px;}
+  .logo .dot{width:8px;height:8px;border-radius:50%;background:var(--teal-bright);box-shadow:0 0 0 3px var(--teal-glow);animation:blink 2.4s ease-in-out infinite;}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  .navlinks{display:flex;gap:26px;font-size:14px;font-family:var(--font-mono);}
+  .navlinks a{text-decoration:none;opacity:0.7;transition:opacity .15s;position:relative;}
+  .navlinks a:hover{opacity:1;}
+  .nav-cta{font-family:var(--font-mono);font-size:13px;font-weight:600;background:var(--ink);color:var(--white);padding:9px 16px;border-radius:2px;text-decoration:none;border:1px solid var(--ink);transition:background .15s;}
+  .nav-cta:hover{background:var(--teal);}
+  @media(max-width:760px){.navlinks{display:none;}}
+
+  /* STATUS TICKER */
+  .ticker{background:var(--ink);color:var(--paper);overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--ink-black);}
+  .ticker-inner{display:inline-flex;animation:scroll-left 32s linear infinite;font-family:var(--font-mono);font-size:12px;letter-spacing:0.03em;}
+  .ticker-inner span{padding:9px 28px;display:inline-flex;align-items:center;gap:8px;opacity:0.85;}
+  .ticker-inner span::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal-bright);}
+  @keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* HERO */
+  header.hero{padding:76px 0 40px;position:relative;}
+  .glow{position:absolute;top:-100px;right:-120px;width:480px;height:480px;background:radial-gradient(circle,var(--teal-glow) 0%,rgba(226,163,61,0.08) 45%,transparent 70%);pointer-events:none;filter:blur(10px);z-index:0;}
+  .hero .wrap{position:relative;z-index:1;}
+  .eyebrow{font-family:var(--font-mono);font-size:13px;color:var(--teal);letter-spacing:0.06em;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:22px;}
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--teal-bright);animation:blink 2.4s ease-in-out infinite;}
+  h1{font-family:var(--font-display);font-size:clamp(38px,6.6vw,64px);font-weight:700;line-height:1.04;letter-spacing:-0.02em;max-width:840px;}
+  h1 span{color:var(--teal);position:relative;}
+  .role-line{font-family:var(--font-display);font-size:clamp(17px,2.4vw,22px);font-weight:500;opacity:0.72;margin-top:16px;max-width:640px;}
+
+  .pulse-wrap{margin:44px 0 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;position:relative;}
+  .pulse-line{width:100%;height:64px;display:block;}
+  .pulse-path{fill:none;stroke:var(--teal-bright);stroke-width:2;stroke-linejoin:round;stroke-linecap:round;}
+  .pulse-glow{fill:none;stroke:var(--teal-bright);stroke-width:6;opacity:0.12;stroke-linejoin:round;stroke-linecap:round;filter:blur(2px);}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .stat{background:var(--paper);padding:22px 20px;transition:background .2s;}
+  .stat:hover{background:var(--white);}
+  .stat .num{font-family:var(--font-mono);font-weight:600;font-size:clamp(22px,3vw,30px);display:flex;align-items:baseline;gap:6px;}
+  .stat .num small{font-size:13px;color:var(--teal);font-weight:500;}
+  .stat .label{font-family:var(--font-mono);font-size:11.5px;opacity:0.55;margin-top:6px;text-transform:uppercase;letter-spacing:0.04em;}
+  @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr);}}
+
+  .scroll-cue{display:flex;align-items:center;gap:10px;margin-top:36px;font-family:var(--font-mono);font-size:11.5px;opacity:0.5;}
+  .scroll-cue .line{width:28px;height:1px;background:var(--ink);animation:pulse-op 2s ease-in-out infinite;}
+  @keyframes pulse-op{0%,100%{opacity:0.3;}50%{opacity:1;}}
+
+  section{padding:92px 0;border-bottom:1px solid var(--line);}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:38px;}
+  .sec-num{font-family:var(--font-mono);font-size:13px;color:var(--teal);}
+  .sec-title{font-family:var(--font-display);font-size:30px;font-weight:600;letter-spacing:-0.01em;}
+  .sec-sub{font-family:var(--font-mono);font-size:13px;opacity:0.5;margin-top:6px;max-width:480px;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.3fr 0.9fr;gap:48px;}
+  @media(max-width:800px){.about-grid{grid-template-columns:1fr;}}
+  .about-body{font-size:17px;opacity:0.88;}
+  .about-body p{margin-bottom:16px;}
+  .about-body strong{color:var(--teal);font-weight:600;}
+  .pull-quote{border-left:2px solid var(--teal-bright);padding:4px 0 4px 22px;font-family:var(--font-display);font-size:21px;font-weight:500;line-height:1.4;align-self:start;}
+
+  /* PRINCIPLES */
+  .principles{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(max-width:700px){.principles{grid-template-columns:1fr;}}
+  .principle{background:var(--paper);padding:30px 28px;transition:background .2s;}
+  .principle:hover{background:var(--white);}
+  .principle .pnum{font-family:var(--font-mono);font-size:12px;color:var(--signal);}
+  .principle h4{font-family:var(--font-display);font-size:19px;font-weight:600;margin:10px 0 8px;}
+  .principle p{font-size:14.5px;opacity:0.75;}
+
+  /* EXPERIENCE */
+  .timeline{position:relative;padding-left:28px;border-left:1px solid var(--line);}
+  .tl-item{position:relative;padding-bottom:44px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{content:'';position:absolute;left:-33px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--teal-bright);}
+  .tl-date{font-family:var(--font-mono);font-size:12px;color:var(--teal);text-transform:uppercase;letter-spacing:0.04em;}
+  .tl-role{font-family:var(--font-display);font-size:19px;font-weight:600;margin:4px 0 2px;}
+  .tl-org{font-size:14px;opacity:0.6;margin-bottom:10px;}
+  .tl-item ul{padding-left:18px;font-size:15px;opacity:0.85;}
+  .tl-item li{margin-bottom:6px;}
+
+  /* CASE STUDIES */
+  .case{display:grid;grid-template-columns:0.9fr 1.6fr;gap:40px;padding:36px 0;border-top:1px solid var(--line);}
+  .case:first-of-type{border-top:none;padding-top:0;}
+  @media(max-width:800px){.case{grid-template-columns:1fr;gap:16px;}}
+  .case-head .tag{font-family:var(--font-mono);font-size:11px;color:var(--coral);text-transform:uppercase;letter-spacing:0.05em;}
+  .case-head h3{font-family:var(--font-display);font-size:24px;font-weight:600;margin:8px 0 12px;}
+  .case-metric{font-family:var(--font-mono);font-size:15px;color:var(--teal);background:var(--paper-dim);display:inline-block;padding:8px 14px;border:1px solid var(--line);}
+  .case-body{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:600px){.case-body{grid-template-columns:1fr;}}
+  .case-col h5{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink);opacity:0.5;margin-bottom:8px;}
+  .case-col p{font-size:14px;opacity:0.82;}
+
+  /* NOW */
+  .now-list{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);}
+  .now-item{background:var(--paper);padding:18px 22px;display:flex;align-items:center;gap:16px;font-family:var(--font-mono);font-size:14px;transition:background .2s;}
+  .now-item:hover{background:var(--white);}
+  .now-item .status{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .now-item .status.active{background:var(--teal-bright);animation:blink 2.4s ease-in-out infinite;}
+  .now-item .status.progress{background:var(--signal);}
+
+  /* SKILLS */
+  .skill-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  @media(max-width:700px){.skill-groups{grid-template-columns:1fr;}}
+  .skill-group h4{font-family:var(--font-mono);font-size:12px;color:var(--teal);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:14px;}
+  .pills{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{font-family:var(--font-mono);font-size:12.5px;border:1px solid var(--line);padding:6px 11px;border-radius:2px;background:var(--white);transition:transform .15s,border-color .15s;}
+  .pill:hover{transform:translateY(-2px);border-color:var(--teal-bright);}
+  .pill.building{border-color:var(--signal);color:#8a6414;background:#FBF3E1;}
+
+  /* FOOTER */
+  footer{background:var(--ink-black);color:var(--paper);padding:88px 0 40px;border-bottom:none;}
+  footer .sec-num{color:var(--teal-bright);}
+  footer .sec-title{color:var(--white);}
+  footer .about-body{opacity:0.72;max-width:520px;}
+  .contact-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px;}
+  .contact-btn{font-family:var(--font-mono);font-size:14px;font-weight:500;padding:12px 20px;border:1px solid rgba(251,252,250,0.3);text-decoration:none;display:inline-flex;align-items:center;gap:8px;color:var(--paper);transition:all .15s;}
+  .contact-btn.primary{background:var(--teal-bright);color:var(--ink-black);border-color:var(--teal-bright);font-weight:600;}
+  .contact-btn:hover{background:var(--teal-bright);border-color:var(--teal-bright);color:var(--ink-black);}
+  .foot-meta{margin-top:56px;padding-top:24px;border-top:1px solid rgba(251,252,250,0.15);font-family:var(--font-mono);font-size:12px;opacity:0.45;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span>SULTAN KHAN</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#principles">Principles</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="mailto:khansultan1@gmail.com">Get in touch</a>
+  </div>
+</nav>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>AVAILABLE — REMOTE, WORLDWIDE</span>
+    <span>RIYADH · GMT+3</span>
+    <span>8+ YEARS MOBILE ENGINEERING</span>
+    <span>2M+ USERS IN PRODUCTION</span>
+    <span>OPEN TO SENIOR / TEAM LEAD ROLES</span>
+    <span>AVAILABLE — REMOTE, WORLDWIDE</span>
+    <span>RIYADH · GMT+3</span>
+    <span>8+ YEARS MOBILE ENGINEERING</span>
+    <span>2M+ USERS IN PRODUCTION</span>
+    <span>OPEN TO SENIOR / TEAM LEAD ROLES</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>Available now — open to remote roles worldwide</div>
+    <h1>Senior Flutter Engineer<br>building software <span>hospitals run on.</span></h1>
+    <p class="role-line">8+ years shipping production mobile applications. 5+ years leading Flutter architecture for healthcare systems serving millions — from patient apps to physician-facing EHR tools.</p>
+
+    <div class="pulse-wrap">
+      <svg class="pulse-line" viewBox="0 0 1000 64" preserveAspectRatio="none">
+        <path class="pulse-glow" d="M0,32 L120,32 L145,32 L160,10 L180,58 L200,32 L230,32 L400,32 L420,32 L440,14 L458,50 L476,32 L500,32 L700,32 L720,32 L738,18 L756,46 L774,32 L800,32 L1000,32" />
+        <path class="pulse-path" id="pulseMain" d="M0,32 L120,32 L145,32 L160,10 L180,58 L200,32 L230,32 L400,32 L420,32 L440,14 L458,50 L476,32 L500,32 L700,32 L720,32 L738,18 L756,46 L774,32 L800,32 L1000,32" />
+      </svg>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num" data-count="2" data-suffix="M+">0</div><div class="label">Active users served</div></div>
+      <div class="stat"><div class="num" data-count="15" data-suffix="K+">0</div><div class="label">Employees on internal app</div></div>
+      <div class="stat"><div class="num" data-count="8" data-suffix=" yrs">0</div><div class="label">Mobile engineering</div></div>
+      <div class="stat"><div class="num" data-count="5" data-suffix=" yrs">0</div><div class="label">Senior / lead capacity</div></div>
+    </div>
+
+    <div class="scroll-cue"><div class="line"></div>SCROLL TO EXPLORE</div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">01</span><h2 class="sec-title">About</h2></div>
+    <div class="about-grid">
+      <div class="about-body reveal">
+        <p>I'm a Flutter engineer based in Riyadh, currently the lead mobile developer embedded with <strong>Dr. Sulaiman Al Habib Health Group (HMG)</strong> — one of the largest private healthcare providers in the Middle East. For the past five years I've owned architecture, delivery, and quality for three production Flutter applications used daily by patients, physicians, and staff.</p>
+        <p>My work sits at the intersection of <strong>product engineering</strong> and <strong>healthcare-grade reliability</strong> — shipping features that real patients and doctors depend on, with the code review discipline and mentoring habits of someone who's been the senior voice in the room for half a decade.</p>
+        <p>I'm now looking for a <strong>remote Senior Flutter Engineer or Team Lead</strong> role with a team that ships fast without cutting corners.</p>
+      </div>
+      <div class="pull-quote reveal">"The apps I own don't get to have a bad day — someone's booking a doctor's visit on the other end."</div>
+    </div>
+  </div>
+</section>
+
+<section id="principles">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">02</span><h2 class="sec-title">How I engineer</h2></div>
+    <p class="sec-sub reveal" style="margin-top:-24px;margin-bottom:32px;">A note on working in the AI era — since it's changing what "senior" actually means.</p>
+    <div class="principles reveal">
+      <div class="principle">
+        <div class="pnum">01</div>
+        <h4>Judgment over output</h4>
+        <p>AI writes more of the boilerplate every year. What doesn't change is who decides the tradeoffs — that's still my job, and it's the part I lean into.</p>
+      </div>
+      <div class="principle">
+        <div class="pnum">02</div>
+        <h4>Architecture first</h4>
+        <p>Every feature starts with "what breaks at 10x scale." At 2M+ users, that question isn't theoretical.</p>
+      </div>
+      <div class="principle">
+        <div class="pnum">03</div>
+        <h4>Review is mentorship</h4>
+        <p>Code review is how a team gets better, not just how code gets cleaner. I treat it as teaching time.</p>
+      </div>
+      <div class="principle">
+        <div class="pnum">04</div>
+        <h4>Ship, then harden</h4>
+        <p>Reliability is a habit built release over release — not a milestone you hit once and move on from.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2 class="sec-title">Experience</h2></div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-date">Mar 2019 — Present</div>
+        <div class="tl-role">Senior Software Developer, Flutter</div>
+        <div class="tl-org">Cloud Solutions — embedded with Dr. Sulaiman Al Habib Health Group</div>
+        <ul>
+          <li>Lead architecture and delivery on the Al Habib Patient app (2M+ active users)</li>
+          <li>Own Al Habib Mohemm, an internal self-service app for 15,000+ employees</li>
+          <li>Core developer on the physician-facing app within VIDA, HMG's cloud HIS/EHR platform</li>
+          <li>Mentor junior developers; lead code review and architecture decisions for the mobile team</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Mar 2018 — Mar 2019</div>
+        <div class="tl-role">Software Engineer</div>
+        <div class="tl-org">Dure Technologies Pvt Ltd</div>
+        <ul><li>Built RTM, a mealtime-monitoring solution, using Ionic and Angular</li></ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Apr 2017 — Mar 2018</div>
+        <div class="tl-role">Associate — System Analyst</div>
+        <div class="tl-org">NSE.IT Limited</div>
+        <ul><li>Built front-end features for the Worldline Merchant Portal</li></ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Mar 2015 — Apr 2017</div>
+        <div class="tl-role">Associate, JavaScript</div>
+        <div class="tl-org">Sportz Interactive Pvt Ltd</div>
+        <ul><li>Built Race Lance and a real-time sports infographics engine</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">04</span><h2 class="sec-title">Case studies</h2></div>
+
+    <div class="case reveal">
+      <div class="case-head">
+        <span class="tag">Patient App</span>
+        <h3>Al Habib Patient</h3>
+        <div class="case-metric">2,000,000+ active users</div>
+      </div>
+      <div class="case-body">
+        <div class="case-col"><h5>Problem</h5><p>Booking and viewing care information had to feel instant and trustworthy at massive scale, across a huge, non-technical patient base.</p></div>
+        <div class="case-col"><h5>Approach</h5><p>Owned the MVVM + Provider architecture, refactored the booking flow, and worked with the backend team on pagination and caching for high concurrent load.</p></div>
+        <div class="case-col"><h5>Impact</h5><p>Sustained 2M+ active users with strong App Store and Play Store ratings through continuous performance work.</p></div>
+      </div>
+    </div>
+
+    <div class="case reveal">
+      <div class="case-head">
+        <span class="tag">Internal Tools</span>
+        <h3>Al Habib Mohemm</h3>
+        <div class="case-metric">15,000+ employees</div>
+      </div>
+      <div class="case-body">
+        <div class="case-col"><h5>Problem</h5><p>15,000+ staff needed a single self-service surface for HR requests, replacing slow manual and paper-based processes.</p></div>
+        <div class="case-col"><h5>Approach</h5><p>Built the app from initial architecture, integrated internal HR systems, and prioritized offline resilience for field staff.</p></div>
+        <div class="case-col"><h5>Impact</h5><p>Became the standard self-service channel for the organization's full non-clinical workforce.</p></div>
+      </div>
+    </div>
+
+    <div class="case reveal">
+      <div class="case-head">
+        <span class="tag">EHR / HIS</span>
+        <h3>VIDA Physician App</h3>
+        <div class="case-metric">Production clinical workflows</div>
+      </div>
+      <div class="case-body">
+        <div class="case-col"><h5>Problem</h5><p>Physicians needed mobile access to scheduling, patient records, and consults without breaking their clinical workflow.</p></div>
+        <div class="case-col"><h5>Approach</h5><p>Built video consultation and EHR-integrated scheduling features within VIDA, HMG's cloud Hospital Information System.</p></div>
+        <div class="case-col"><h5>Impact</h5><p>Adopted hospital-wide as part of physicians' daily clinical toolkit.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="now">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">05</span><h2 class="sec-title">Right now</h2></div>
+    <div class="now-list reveal">
+      <div class="now-item"><span class="status active"></span>Interviewing for remote Senior Flutter Engineer / Team Lead roles</div>
+      <div class="now-item"><span class="status progress"></span>Building a CI/CD pipeline (GitHub Actions) into my latest side project</div>
+      <div class="now-item"><span class="status progress"></span>Migrating a personal project from Provider to Riverpod</div>
+      <div class="now-item"><span class="status active"></span>Writing up architecture decisions from 5 years on a 2M-user app</div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">06</span><h2 class="sec-title">Stack</h2></div>
+    <div class="skill-groups reveal">
+      <div class="skill-group">
+        <h4>Mobile</h4>
+        <div class="pills">
+          <span class="pill">Flutter</span><span class="pill">Dart</span><span class="pill">MVVM</span>
+          <span class="pill">Provider</span><span class="pill">Riverpod</span><span class="pill">Firebase</span>
+          <span class="pill">REST APIs</span><span class="pill">WebSocket</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Practice</h4>
+        <div class="pills">
+          <span class="pill">Architecture Ownership</span><span class="pill">Code Review</span>
+          <span class="pill">Mentoring</span><span class="pill">Agile Delivery</span>
+          <span class="pill">Release Management</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Currently building</h4>
+        <div class="pills">
+          <span class="pill building">CI/CD — GitHub Actions</span>
+          <span class="pill building">Automated Testing</span>
+          <span class="pill building">System Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">07</span><h2 class="sec-title">Let's talk</h2></div>
+    <p class="about-body reveal">Open to remote Senior Flutter Engineer and Team Lead roles, worldwide. Based in Riyadh — comfortable overlapping with EU, MENA, and US-East hours.</p>
+    <div class="contact-row reveal">
+      <a class="contact-btn primary" href="mailto:khansultan1@gmail.com">Email me →</a>
+      <a class="contact-btn" href="https://github.com/khansultan1" target="_blank">GitHub</a>
+      <a class="contact-btn" href="https://linkedin.com/in/khansultan1" target="_blank">LinkedIn</a>
+      <a class="contact-btn" href="https://stackoverflow.com/users/4252231/sultan-khan" target="_blank">Stack Overflow</a>
+    </div>
+    <div class="foot-meta">
+      <span>Riyadh, Saudi Arabia</span>
+      <span>© 2026 Sultan Khan</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // counting stats
+  const counters = document.querySelectorAll('[data-count]');
+  const cio = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      let cur = 0;
+      const step = target / 40;
+      const timer = setInterval(() => {
+        cur += step;
+        if (cur >= target) { cur = target; clearInterval(timer); }
+        el.textContent = (Number.isInteger(target) ? Math.round(cur) : cur.toFixed(1)) + suffix;
+      }, 25);
+      cio.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => cio.observe(el));
+
+  // looping heartbeat pulse
+  const pulse = document.getElementById('pulseMain');
+  const len = pulse.getTotalLength();
+  pulse.style.strokeDasharray = len;
+  pulse.style.strokeDashoffset = len;
+  function beat(){
+    pulse.style.transition = 'none';
+    pulse.style.strokeDashoffset = len;
+    requestAnimationFrame(() => {
+      pulse.style.transition = 'stroke-dashoffset 1.8s ease-in-out';
+      pulse.style.strokeDashoffset = 0;
+    });
+  }
+  beat();
+  setInterval(beat, 3400);
+
+  // mouse-reactive glow
+  const glow = document.querySelector('.glow');
+  document.querySelector('.hero').addEventListener('mousemove', (e) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    glow.style.transform = `translate(${(x - r.width/2) * 0.08}px, ${(y - r.height/2) * 0.08}px)`;
+  });
+</script>
+
+</body>
+</html>
