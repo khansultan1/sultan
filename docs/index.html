@@ -1,325 +1,318 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Sultan Khan | Senior Flutter Developer for Remote Jobs</title>
-  <meta name="description" content="Sultan Khan is a Senior Flutter Developer open to remote jobs worldwide. 8+ years in mobile engineering, 2M+ users served, Dart, Flutter, Firebase, REST APIs, and healthcare-grade app architecture." />
-  <meta name="keywords" content="Flutter developer, remote Flutter developer, Flutter candidate, mobile app developer, Dart developer, remote mobile engineer, Firebase, REST API, CI/CD, Riyadh" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="author" content="Sultan Khan" />
+  <title>Sultan Khan | Awwwards-style Flutter Portfolio</title>
+  <meta name="description" content="A creative, animated portfolio for Sultan Khan — Senior Flutter Developer open to remote opportunities worldwide." />
+  <meta name="keywords" content="Flutter developer, remote Flutter jobs, senior mobile engineer, Dart, Firebase, portfolio" />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://khansultan1.github.io/sultan/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Sultan Khan | Senior Flutter Developer for Remote Jobs" />
-  <meta property="og:description" content="Senior Flutter Developer open to remote roles. 8+ years of mobile engineering, 2M+ active users, healthcare and enterprise app delivery." />
+  <meta property="og:title" content="Sultan Khan | Awwwards-style Flutter Portfolio" />
+  <meta property="og:description" content="Creative multi-theme portfolio with parallax and motion." />
   <meta property="og:url" content="https://khansultan1.github.io/sultan/" />
-  <meta property="og:site_name" content="Sultan Khan Portfolio" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sultan Khan | Senior Flutter Developer" />
-  <meta name="twitter:description" content="Open to remote Flutter jobs. Dart, Flutter, Firebase, REST APIs, architecture, mentorship." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <meta name="twitter:description" content="Creative Flutter portfolio with animation and parallax." />
 
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Sultan Khan",
-    "url": "https://khansultan1.github.io/sultan/",
-    "email": "mailto:khansultan1@gmail.com",
-    "jobTitle": "Senior Flutter Developer",
-    "description": "Senior Flutter Developer open to remote jobs, specializing in Dart, Flutter architecture, Firebase, REST APIs, and scalable mobile apps.",
-    "knowsAbout": [
-      "Flutter",
-      "Dart",
-      "Firebase",
-      "Mobile App Development",
-      "REST APIs",
-      "CI/CD",
-      "State Management",
-      "Provider",
-      "Riverpod",
-      "Software Architecture",
-      "Code Review",
-      "Mentoring"
-    ],
-    "sameAs": [
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Sultan Khan",
+    "url":"https://khansultan1.github.io/sultan/",
+    "jobTitle":"Senior Flutter Developer",
+    "email":"mailto:khansultan1@gmail.com",
+    "sameAs":[
       "https://github.com/khansultan1",
-      "https://stackoverflow.com/users/4252231/sultan-khan",
-      "https://khansultan1.github.io/sultan"
+      "https://stackoverflow.com/users/4252231/sultan-khan"
     ],
-    "hasOccupation": {
-      "@type": "Occupation",
-      "name": "Flutter Developer",
-      "occupationLocation": {
-        "@type": "City",
-        "name": "Riyadh"
-      },
-      "skills": "Flutter, Dart, Firebase, REST APIs, CI/CD, architecture"
-    }
+    "knowsAbout":["Flutter","Dart","Firebase","REST APIs","CI/CD","Mobile Architecture"]
   }
   </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
   <style>
     :root {
-      --ink:#12201C;
-      --paper:#EFF1EC;
-      --paper-dim:#E3E6DF;
-      --teal:#1F5C4E;
-      --teal-bright:#2E8C74;
-      --teal-glow:rgba(46,140,116,0.18);
-      --signal:#E2A33D;
-      --line:#C7CCC5;
-      --white:#FBFCFA;
-      --ink-black:#0B140F;
-      --font-display:'Space Grotesk', sans-serif;
-      --font-body:'IBM Plex Sans', sans-serif;
-      --font-mono:'IBM Plex Mono', monospace;
+      --bg:#0b0f1a; --bg2:#111827; --text:#e5e7eb; --muted:#9ca3af; --line:#1f2937;
+      --brand:#22d3ee; --brand2:#a78bfa; --card:#0f172a; --glow:rgba(34,211,238,.28);
+      --font-display:'Syne',sans-serif; --font-body:'Inter',sans-serif; --font-mono:'JetBrains Mono',monospace;
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { background:var(--paper); color:var(--ink); font-family:var(--font-body); line-height:1.6; overflow-x:hidden; }
-    a { color:inherit; }
-    .wrap { max-width:1080px; margin:0 auto; padding:0 32px; }
-    ::selection { background:var(--teal-bright); color:var(--white); }
+    html[data-theme="light"] {
+      --bg:#f4f6fb; --bg2:#ffffff; --text:#0f172a; --muted:#475569; --line:#dbe2ea;
+      --brand:#2563eb; --brand2:#7c3aed; --card:#ffffff; --glow:rgba(37,99,235,.20);
+    }
+    html[data-theme="aurora"] {
+      --bg:#060812; --bg2:#0b1222; --text:#ecfeff; --muted:#9dd6e1; --line:#1a2f3c;
+      --brand:#00f5d4; --brand2:#9b5de5; --card:#0a1324; --glow:rgba(0,245,212,.30);
+    }
 
-    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
-    .reveal.in { opacity:1; transform:translateY(0); }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:radial-gradient(1200px 600px at 80% -10%, var(--glow), transparent 60%), var(--bg);color:var(--text);overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
 
-    nav { position:sticky; top:0; z-index:60; background:rgba(239,241,236,0.88); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
-    nav .wrap { display:flex; align-items:center; justify-content:space-between; height:64px; }
-    .logo { font-family:var(--font-mono); font-weight:600; font-size:15px; display:flex; align-items:center; gap:8px; }
-    .logo .dot { width:8px; height:8px; border-radius:50%; background:var(--teal-bright); box-shadow:0 0 0 3px var(--teal-glow); animation:blink 2.4s ease-in-out infinite; }
-    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
-    .navlinks { display:flex; gap:26px; font-size:14px; font-family:var(--font-mono); }
-    .navlinks a { text-decoration:none; opacity:0.7; transition:opacity .15s; }
-    .navlinks a:hover { opacity:1; }
-    .nav-cta { font-family:var(--font-mono); font-size:13px; font-weight:600; background:var(--ink); color:var(--white); padding:9px 16px; border-radius:2px; text-decoration:none; border:1px solid var(--ink); }
-    .nav-cta:hover { background:var(--teal); }
-    @media(max-width:760px){ .navlinks { display:none; } }
+    .noise{position:fixed;inset:0;pointer-events:none;opacity:.06;background-image:radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);background-size:3px 3px;mix-blend-mode:soft-light;z-index:2}
+    .cursor-glow{position:fixed;width:280px;height:280px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,var(--glow),transparent 65%);transform:translate(-50%,-50%);filter:blur(8px)}
 
-    .ticker { background:var(--ink); color:var(--paper); overflow:hidden; white-space:nowrap; border-bottom:1px solid var(--ink-black); }
-    .ticker-inner { display:inline-flex; animation:scroll-left 32s linear infinite; font-family:var(--font-mono); font-size:12px; letter-spacing:0.03em; }
-    .ticker-inner span { padding:9px 28px; display:inline-flex; align-items:center; gap:8px; opacity:0.85; }
-    .ticker-inner span::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--teal-bright); }
-    @keyframes scroll-left { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+    nav{position:fixed;top:0;left:0;right:0;z-index:60;background:color-mix(in srgb,var(--bg) 75%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    nav .wrap{height:70px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-family:var(--font-mono);font-weight:600;letter-spacing:.06em;font-size:13px;display:flex;gap:8px;align-items:center}
+    .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 6px color-mix(in srgb,var(--brand) 20%, transparent);animation:pulse 2s infinite}
+    @keyframes pulse{50%{opacity:.35}}
 
-    header.hero { padding:76px 0 40px; position:relative; }
-    .glow { position:absolute; top:-100px; right:-120px; width:480px; height:480px; background:radial-gradient(circle,var(--teal-glow) 0%,rgba(226,163,61,0.08) 45%,transparent 70%); pointer-events:none; filter:blur(4px); }
-    .hero .wrap { position:relative; z-index:1; }
-    .eyebrow { font-family:var(--font-mono); font-size:13px; color:var(--teal); letter-spacing:0.06em; text-transform:uppercase; display:flex; align-items:center; gap:8px; margin-bottom:22px; }
-    .eyebrow .dot { width:6px; height:6px; border-radius:50%; background:var(--teal-bright); animation:blink 2.4s ease-in-out infinite; }
-    h1 { font-family:var(--font-display); font-size:clamp(38px,6.6vw,64px); font-weight:700; line-height:1.04; letter-spacing:-0.02em; max-width:860px; }
-    h1 span { color:var(--teal); }
-    .role-line { font-family:var(--font-display); font-size:clamp(17px,2.4vw,22px); font-weight:500; opacity:0.72; margin-top:16px; max-width:700px; }
+    .navlinks{display:flex;gap:22px;font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+    .navlinks a{position:relative}
+    .navlinks a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--brand);transition:.25s}
+    .navlinks a:hover::after{width:100%}
+    .nav-cta{padding:10px 14px;border:1px solid var(--line);border-radius:999px;font-family:var(--font-mono);font-size:12px}
 
-    .pulse-wrap { margin:44px 0 8px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:18px 0; }
-    .pulse-line { width:100%; height:64px; display:block; }
-    .pulse-path { fill:none; stroke:var(--teal-bright); stroke-width:2; stroke-linejoin:round; stroke-linecap:round; }
-    .pulse-glow { fill:none; stroke:var(--teal-bright); stroke-width:6; opacity:0.12; stroke-linejoin:round; stroke-linecap:round; filter:blur(2px); }
+    .theme-switch{display:flex;gap:8px}
+    .theme-btn{border:1px solid var(--line);background:var(--bg2);color:var(--text);padding:8px 10px;border-radius:999px;font-size:11px;font-family:var(--font-mono);cursor:pointer}
 
-    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
-    .stat { background:var(--paper); padding:22px 20px; }
-    .stat .num { font-family:var(--font-mono); font-weight:600; font-size:clamp(22px,3vw,30px); }
-    .stat .label { font-family:var(--font-mono); font-size:11.5px; opacity:0.55; margin-top:6px; text-transform:uppercase; letter-spacing:0.04em; }
-    @media(max-width:700px){ .stats{grid-template-columns:repeat(2,1fr);} }
+    .hero{min-height:100vh;display:grid;place-items:center;position:relative;padding-top:80px}
+    .parallax-layer{position:absolute;inset:auto;pointer-events:none;transition:transform .1s linear}
+    .orb{width:360px;height:360px;border-radius:50%;filter:blur(30px);opacity:.5}
+    .orb.one{top:14%;left:8%;background:radial-gradient(circle,var(--brand),transparent 65%)}
+    .orb.two{bottom:10%;right:6%;background:radial-gradient(circle,var(--brand2),transparent 65%)}
 
-    section { padding:92px 0; border-bottom:1px solid var(--line); }
-    .sec-head { display:flex; align-items:baseline; gap:14px; margin-bottom:38px; }
-    .sec-num { font-family:var(--font-mono); font-size:13px; color:var(--teal); }
-    .sec-title { font-family:var(--font-display); font-size:30px; font-weight:600; }
+    .hero-inner{text-align:center;position:relative;z-index:3}
+    .kicker{font-family:var(--font-mono);font-size:12px;color:var(--brand);letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px}
+    h1{font-family:var(--font-display);font-size:clamp(44px,9vw,110px);line-height:.95;letter-spacing:-.03em;max-width:1000px;margin:0 auto}
+    .grad{background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .subtitle{max-width:760px;margin:20px auto 0;color:var(--muted);font-size:18px}
 
-    .about-grid { display:grid; grid-template-columns:1.3fr 0.9fr; gap:48px; }
-    @media(max-width:800px){ .about-grid{grid-template-columns:1fr;} }
-    .about-body { font-size:17px; opacity:0.88; }
-    .about-body p { margin-bottom:16px; }
-    .about-body strong { color:var(--teal); }
-    .pull-quote { border-left:2px solid var(--teal-bright); padding:4px 0 4px 22px; font-family:var(--font-display); font-size:21px; font-weight:500; }
+    .hero-actions{margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .btn{padding:12px 18px;border-radius:999px;border:1px solid var(--line);font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;transition:transform .2s, box-shadow .2s}
+    .btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#031018;border:none}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--glow)}
 
-    .timeline{position:relative;padding-left:28px;border-left:1px solid var(--line);}
-    .tl-item{position:relative;padding-bottom:44px;}
-    .tl-item:last-child{padding-bottom:0;}
-    .tl-item::before{content:'';position:absolute;left:-33px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--teal-bright);}
-    .tl-date{font-family:var(--font-mono);font-size:12px;color:var(--teal);text-transform:uppercase;}
-    .tl-role{font-family:var(--font-display);font-size:19px;font-weight:600;margin:4px 0 2px;}
-    .tl-org{font-size:14px;opacity:0.6;margin-bottom:10px;}
-    .tl-item ul{padding-left:18px;font-size:15px;opacity:0.85;}
+    .scrollbar{position:fixed;top:70px;left:0;height:2px;background:linear-gradient(90deg,var(--brand),var(--brand2));width:0;z-index:70}
 
-    .skill-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
-    @media(max-width:700px){.skill-groups{grid-template-columns:1fr;}}
-    .skill-group h4{font-family:var(--font-mono);font-size:12px;color:var(--teal);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:14px;}
-    .pills{display:flex;flex-wrap:wrap;gap:8px;}
-    .pill{font-family:var(--font-mono);font-size:12.5px;border:1px solid var(--line);padding:6px 11px;border-radius:2px;background:var(--white);}
+    section{padding:110px 0;border-top:1px solid var(--line);position:relative;z-index:3}
+    .head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:34px}
+    .title{font-family:var(--font-display);font-size:clamp(30px,4vw,52px)}
+    .index{font-family:var(--font-mono);font-size:12px;color:var(--brand)}
 
-    .resume-card{background:var(--white);border:1px solid var(--line);padding:24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;}
-    .btn{font-family:var(--font-mono);font-size:13px;text-decoration:none;border:1px solid var(--ink);padding:10px 14px;display:inline-block;}
-    .btn.primary{background:var(--ink);color:var(--white);}    
+    .grid{display:grid;gap:18px}
+    .about{grid-template-columns:1.2fr .8fr}
+    .card{background:color-mix(in srgb,var(--card) 88%, transparent);border:1px solid var(--line);padding:24px;border-radius:18px;transform-style:preserve-3d;transition:transform .25s,border-color .25s}
+    .card:hover{border-color:color-mix(in srgb,var(--brand) 55%, var(--line));transform:translateY(-4px)}
+    .about p{color:var(--muted);font-size:16px;margin-bottom:12px}
 
-    footer{background:var(--ink-black);color:var(--paper);padding:88px 0 40px;border-bottom:none;}
-    .contact-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px;}
-    .contact-btn{font-family:var(--font-mono);font-size:14px;padding:12px 20px;border:1px solid rgba(251,252,250,0.3);text-decoration:none;}
-    .contact-btn.primary{background:var(--teal-bright);color:var(--ink-black);border-color:var(--teal-bright);font-weight:600;}
+    .skills{grid-template-columns:repeat(3,1fr)}
+    .pillbox{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .pill{padding:7px 10px;border:1px solid var(--line);border-radius:999px;font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+
+    .timeline{display:grid;gap:14px}
+    .job h3{font-size:22px;font-family:var(--font-display)}
+    .job .meta{color:var(--brand);font-family:var(--font-mono);font-size:12px;margin:6px 0 10px}
+    .job li{color:var(--muted);margin-left:18px;margin-bottom:6px}
+
+    footer{padding:90px 0 60px;border-top:1px solid var(--line)}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s ease}
+    .reveal.in{opacity:1;transform:translateY(0)}
+
+    @media (max-width:920px){
+      .about,.skills{grid-template-columns:1fr}
+      .navlinks{display:none}
+      .theme-switch{display:none}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none!important;transition:none!important}
+      .parallax-layer,.cursor-glow{display:none!important}
+    }
   </style>
 </head>
 <body>
+  <div class="scrollbar" id="scrollbar"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <div class="noise"></div>
+
   <nav>
     <div class="wrap">
-      <div class="logo"><span class="dot"></span>SULTAN KHAN</div>
+      <div class="brand"><span class="dot"></span> SULTAN KHAN</div>
       <div class="navlinks">
         <a href="#about">About</a>
-        <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
-        <a href="#resume">Resume</a>
+        <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
       </div>
-      <a class="nav-cta" href="mailto:khansultan1@gmail.com">Hire me</a>
+      <div style="display:flex;gap:10px;align-items:center">
+        <div class="theme-switch">
+          <button class="theme-btn" data-theme="dark">Dark</button>
+          <button class="theme-btn" data-theme="light">Light</button>
+          <button class="theme-btn" data-theme="aurora">Aurora</button>
+        </div>
+        <a class="nav-cta" href="mailto:khansultan1@gmail.com">Hire me</a>
+      </div>
     </div>
   </nav>
 
-  <div class="ticker">
-    <div class="ticker-inner">
-      <span>OPEN TO REMOTE FLUTTER JOBS</span>
-      <span>SENIOR FLUTTER CANDIDATE</span>
-      <span>DART · FLUTTER · FIREBASE · REST APIS</span>
-      <span>2M+ USERS IN PRODUCTION</span>
-      <span>OPEN TO REMOTE FLUTTER JOBS</span>
-      <span>SENIOR FLUTTER CANDIDATE</span>
-      <span>DART · FLUTTER · FIREBASE · REST APIS</span>
-      <span>2M+ USERS IN PRODUCTION</span>
-    </div>
-  </div>
+  <header class="hero" id="top">
+    <div class="parallax-layer orb one" data-depth="0.08"></div>
+    <div class="parallax-layer orb two" data-depth="0.12"></div>
 
-  <header class="hero">
-    <div class="glow"></div>
-    <div class="wrap">
-      <div class="eyebrow"><span class="dot"></span>Available now for remote opportunities</div>
-      <h1>Creative, reliable <span>Senior Flutter Developer</span> for modern mobile products.</h1>
-      <p class="role-line">I build Flutter applications used by millions, with architecture designed for speed, reliability, and long-term scalability.</p>
-      <div class="pulse-wrap">
-        <svg class="pulse-line" viewBox="0 0 1000 64" preserveAspectRatio="none">
-          <path class="pulse-glow" d="M0,32 L120,32 L145,32 L160,10 L180,58 L200,32 L230,32 L400,32 L420,32 L440,14 L458,50 L476,32 L500,32 L700,32 L720,32 L738,18 L756,46 L774,32 L800,32 L1000,32"></path>
-          <path class="pulse-path" id="pulseMain" d="M0,32 L120,32 L145,32 L160,10 L180,58 L200,32 L230,32 L400,32 L420,32 L440,14 L458,50 L476,32 L500,32 L700,32 L720,32 L738,18 L756,46 L774,32 L800,32 L1000,32"></path>
-        </svg>
-      </div>
-      <div class="stats">
-        <div class="stat"><div class="num">2M+</div><div class="label">Active users served</div></div>
-        <div class="stat"><div class="num">15K+</div><div class="label">Employees on internal app</div></div>
-        <div class="stat"><div class="num">8+ yrs</div><div class="label">Mobile engineering</div></div>
-        <div class="stat"><div class="num">5+ yrs</div><div class="label">Flutter leadership</div></div>
+    <div class="hero-inner wrap reveal">
+      <div class="kicker">Awwwards-inspired creative portfolio</div>
+      <h1>Senior <span class="grad">Flutter Developer</span> building mobile products with style and scale.</h1>
+      <p class="subtitle">Open to remote jobs worldwide. 8+ years in mobile engineering, 2M+ users served, strong in Dart, Flutter architecture, Firebase, APIs, and team leadership.</p>
+      <div class="hero-actions">
+        <a class="btn primary magnetic" href="mailto:khansultan1@gmail.com">Start a Conversation</a>
+        <a class="btn magnetic" href="./resume.md" target="_blank" rel="noopener">View Resume</a>
+        <a class="btn magnetic" href="./Sultan%20Khan%20Resume.pdf" target="_blank" rel="noopener">Download PDF</a>
       </div>
     </div>
   </header>
 
   <section id="about">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">01</span><h2 class="sec-title">About me</h2></div>
-      <div class="about-grid">
-        <div class="about-body reveal">
-          <p>I am <strong>Sultan Khan</strong>, a Senior Flutter Developer based in Riyadh and open to <strong>remote jobs worldwide</strong>.</p>
-          <p>I specialize in <strong>Flutter + Dart</strong> application architecture, API integration, performance tuning, and mobile delivery for high-scale products.</p>
-          <p>I bring both technical depth and team maturity: architecture ownership, code reviews, mentoring, and dependable release execution.</p>
-        </div>
-        <div class="pull-quote reveal">“I build mobile products that users trust every day, not prototypes that break in production.”</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">02</span><h2 class="sec-title">Experience</h2></div>
-      <div class="timeline reveal">
-        <div class="tl-item">
-          <div class="tl-date">Mar 2019 — Present</div>
-          <div class="tl-role">Senior Software Developer, Flutter</div>
-          <div class="tl-org">Cloud Solutions — embedded with Dr. Sulaiman Al Habib Health Group</div>
-          <ul>
-            <li>Led Flutter architecture and delivery for a patient app serving 2M+ active users.</li>
-            <li>Built and scaled an internal self-service app for 15,000+ employees.</li>
-            <li>Contributed to physician workflows in hospital information systems.</li>
-            <li>Mentored developers and improved review quality and delivery standards.</li>
-          </ul>
-        </div>
+      <div class="head reveal"><h2 class="title">About</h2><span class="index">01</span></div>
+      <div class="grid about">
+        <article class="card tilt reveal">
+          <p>I’m Sultan Khan, a Senior Flutter Developer focused on reliable mobile apps that perform at production scale.</p>
+          <p>My recent work includes healthcare and enterprise products used by millions, where quality, UX, and engineering discipline are non-negotiable.</p>
+          <p>I’m available for remote Flutter roles (Senior / Lead) and open to global teams.</p>
+        </article>
+        <aside class="card tilt reveal">
+          <p style="font-family:var(--font-display);font-size:26px;line-height:1.2">“Creative front-end, clean architecture, production confidence.”</p>
+        </aside>
       </div>
     </div>
   </section>
 
   <section id="skills">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">03</span><h2 class="sec-title">Skills for remote Flutter roles</h2></div>
-      <div class="skill-groups reveal">
-        <div class="skill-group">
-          <h4>Core Flutter</h4>
-          <div class="pills">
-            <span class="pill">Flutter</span><span class="pill">Dart</span><span class="pill">State Management</span><span class="pill">Provider</span><span class="pill">Riverpod</span>
+      <div class="head reveal"><h2 class="title">Skills</h2><span class="index">02</span></div>
+      <div class="grid skills">
+        <div class="card tilt reveal">
+          <h3>Flutter Core</h3>
+          <div class="pillbox">
+            <span class="pill">Flutter</span><span class="pill">Dart</span><span class="pill">Provider</span><span class="pill">Riverpod</span><span class="pill">State Management</span>
           </div>
         </div>
-        <div class="skill-group">
-          <h4>Engineering</h4>
-          <div class="pills">
-            <span class="pill">REST APIs</span><span class="pill">Firebase</span><span class="pill">Authentication</span><span class="pill">App Performance</span><span class="pill">Testing</span><span class="pill">CI/CD</span>
+        <div class="card tilt reveal">
+          <h3>Engineering</h3>
+          <div class="pillbox">
+            <span class="pill">REST APIs</span><span class="pill">Firebase</span><span class="pill">CI/CD</span><span class="pill">Testing</span><span class="pill">Performance</span>
           </div>
         </div>
-        <div class="skill-group">
-          <h4>Team impact</h4>
-          <div class="pills">
-            <span class="pill">Code Review</span><span class="pill">Mentorship</span><span class="pill">Agile Delivery</span><span class="pill">Communication</span><span class="pill">Remote Collaboration</span>
+        <div class="card tilt reveal">
+          <h3>Leadership</h3>
+          <div class="pillbox">
+            <span class="pill">Architecture</span><span class="pill">Code Review</span><span class="pill">Mentorship</span><span class="pill">Communication</span><span class="pill">Remote Collaboration</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="resume">
+  <section id="experience">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">04</span><h2 class="sec-title">Resume</h2></div>
-      <div class="resume-card reveal">
-        <p><strong>Updated resume:</strong> ATS + AI-friendly content in Markdown, plus original PDF attachment.</p>
-        <div>
-          <a class="btn primary" href="./Sultan%20Khan%20Resume.pdf" target="_blank" rel="noopener">Download PDF Resume</a>
-          <a class="btn" href="./resume.md" target="_blank" rel="noopener">View Text Resume</a>
-        </div>
+      <div class="head reveal"><h2 class="title">Experience</h2><span class="index">03</span></div>
+      <div class="timeline">
+        <article class="card job tilt reveal">
+          <h3>Senior Software Developer, Flutter</h3>
+          <div class="meta">Mar 2019 — Present · Cloud Solutions (Embedded with HMG)</div>
+          <ul>
+            <li>Led Flutter architecture for patient applications serving 2M+ active users.</li>
+            <li>Built internal app ecosystem for 15,000+ employees.</li>
+            <li>Drove delivery quality via mentoring, reviews, and release improvements.</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
 
   <footer id="contact">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">05</span><h2 class="sec-title">Let’s build together</h2></div>
-      <p class="about-body reveal">If you are hiring a Flutter candidate for a remote job, I’m available for Senior Flutter Developer and Team Lead opportunities.</p>
-      <div class="contact-row reveal">
-        <a class="contact-btn primary" href="mailto:khansultan1@gmail.com">Email me</a>
-        <a class="contact-btn" href="https://github.com/khansultan1" target="_blank" rel="noopener">GitHub</a>
-        <a class="contact-btn" href="https://stackoverflow.com/users/4252231/sultan-khan" target="_blank" rel="noopener">Stack Overflow</a>
+    <div class="wrap reveal">
+      <div class="head"><h2 class="title">Let’s Build Something Great</h2><span class="index">04</span></div>
+      <p style="color:var(--muted);max-width:700px">Hiring for a Flutter candidate or remote mobile engineer? I’m open to Senior Flutter Developer and Team Lead roles.</p>
+      <div class="hero-actions" style="justify-content:flex-start;margin-top:18px">
+        <a class="btn primary magnetic" href="mailto:khansultan1@gmail.com">Email me</a>
+        <a class="btn magnetic" href="https://github.com/khansultan1" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn magnetic" href="https://stackoverflow.com/users/4252231/sultan-khan" target="_blank" rel="noopener">Stack Overflow</a>
       </div>
     </div>
   </footer>
 
   <script>
-    const revealEls = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => io.observe(el));
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) root.setAttribute('data-theme', savedTheme);
 
-    const pulse = document.getElementById('pulseMain');
-    const len = pulse.getTotalLength();
-    pulse.style.strokeDasharray = len;
-    pulse.style.strokeDashoffset = len;
-    function beat(){
-      pulse.style.transition = 'none';
-      pulse.style.strokeDashoffset = len;
-      requestAnimationFrame(() => {
-        pulse.style.transition = 'stroke-dashoffset 1.8s ease-in-out';
-        pulse.style.strokeDashoffset = 0;
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.dataset.theme;
+        root.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
       });
-    }
-    beat();
-    setInterval(beat, 3400);
+    });
+
+    // Scroll progress
+    const bar = document.getElementById('scrollbar');
+    const updateBar = () => {
+      const h = document.documentElement;
+      const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      bar.style.width = p + '%';
+    };
+    document.addEventListener('scroll', updateBar, {passive:true});
+    updateBar();
+
+    // Reveal
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    }, {threshold:.14});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Cursor glow
+    const glow = document.getElementById('cursorGlow');
+    window.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+
+    // Mouse parallax
+    const layers = document.querySelectorAll('.parallax-layer');
+    window.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5);
+      const y = (e.clientY / window.innerHeight - 0.5);
+      layers.forEach(el => {
+        const d = parseFloat(el.dataset.depth || '0.08');
+        el.style.transform = `translate(${x * 60 * d}px, ${y * 60 * d}px)`;
+      });
+    });
+
+    // Tilt cards
+    document.querySelectorAll('.tilt').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5;
+        const y = (e.clientY - r.top) / r.height - .5;
+        card.style.transform = `rotateX(${(-y*7)}deg) rotateY(${(x*9)}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => card.style.transform = 'translateY(0)');
+    });
+
+    // Magnetic buttons
+    document.querySelectorAll('.magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - (r.left + r.width/2);
+        const y = e.clientY - (r.top + r.height/2);
+        btn.style.transform = `translate(${x * .15}px, ${y * .15}px)`;
+      });
+      btn.addEventListener('mouseleave', () => btn.style.transform = 'translate(0,0)');
+    });
   </script>
 </body>
 </html>
