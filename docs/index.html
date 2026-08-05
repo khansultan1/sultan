@@ -93,8 +93,10 @@
         .project-card:hover .project-bg { transform: scale(1.1); opacity: 0.6; }
         .project-content { position: relative; z-index: 2; padding: 32px; background: linear-gradient(0deg, rgba(5,5,5,0.9) 0%, transparent 100%); }
         .project-title { font-family: 'Syne', sans-serif; font-size: 24px; margin-bottom: 8px; }
-        .project-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .project-tags { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
         .tag { font-family: 'JetBrains Mono'; font-size: 10px; color: var(--accent-cyan); border: 1px solid var(--border); padding: 4px 8px; border-radius: 4px; }
+        .play-store-tag { background: rgba(0, 245, 212, 0.15); text-decoration: none; transition: background 0.2s; }
+        .play-store-tag:hover { background: rgba(0, 245, 212, 0.3); }
 
         /* Footer */
         footer { padding: 80px 48px; border-top: 1px solid var(--border); text-align: center; }
@@ -254,6 +256,7 @@
             <span class="section-num">04 / CREATIONS</span>
             <h2 class="section-title">Major Projects.</h2>
             <div class="projects-grid">
+                <!-- Existing Projects -->
                 <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?q=80&w=2070&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Dr Sulaiman Al Habib App</h3><div class="project-tags"><span class="tag">Flutter</span><span class="tag">Healthcare</span></div></div></div>
                 <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1642790106117-e829e14a795f?q=80&w=2128&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Al Habib Mohemm (E-Services)</h3><div class="project-tags"><span class="tag">Flutter</span><span class="tag">Enterprise</span></div></div></div>
                 <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Doctor Application</h3><div class="project-tags"><span class="tag">Flutter</span><span class="tag">Physician</span></div></div></div>
@@ -264,6 +267,28 @@
                 <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Race Lance (Handicapping)</h3><div class="project-tags"><span class="tag">JavaScript</span><span class="tag">Data Viz</span></div></div></div>
                 <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Infographics Engine</h3><div class="project-tags"><span class="tag">Angular</span><span class="tag">Real-time</span></div></div></div>
                 <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=2070&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Worldline On The Go</h3><div class="project-tags"><span class="tag">IONIC 1</span><span class="tag">AngularJS</span></div></div></div>
+                
+                <!-- Game Projects -->
+                <div class="project-card glass">
+                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1606503153255-59d8b8b82176?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Cube King 3D</h3>
+                        <div class="project-tags">
+                            <span class="tag">Mobile Game</span>
+                            <a href="https://play.google.com/store/apps/details?id=com.app.games.cubeking3d" target="_blank" class="tag play-store-tag">Play Store ↗</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card glass">
+                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1606167668584-78701c57f13d?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Slice Dice</h3>
+                        <div class="project-tags">
+                            <span class="tag">Mobile Game</span>
+                            <a href="https://play.google.com/store/apps/details?id=com.games.slice.dice" target="_blank" class="tag play-store-tag">Play Store ↗</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -284,16 +309,17 @@
     <button class="chat-toggle-btn" id="chat-toggle-btn"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></button>
     <div class="chatbot-container" id="chatbot-container">
         <div class="chat-header">
-            <div class="chat-title">Resume Assistant // Local AI</div>
+            <div class="chat-title">Sultan's Assistant</div>
             <button class="chat-close" id="chat-close">✕</button>
         </div>
         <div class="chat-messages" id="chat-messages">
-            <div class="chat-message bot-msg">Hello! I am a local assistant trained on Sultan's PDF resume. Ask me anything, or try a suggestion below!</div>
+            <div class="chat-message bot-msg">Hello! I am Sultan's Assistant. Ask me anything about his experience, skills, or projects!</div>
         </div>
         <div class="chat-suggestions">
             <button class="chat-suggestion" onclick="sendSuggestion('Experience')">Experience</button>
             <button class="chat-suggestion" onclick="sendSuggestion('Skills')">Skills</button>
             <button class="chat-suggestion" onclick="sendSuggestion('Projects')">Projects</button>
+            <button class="chat-suggestion" onclick="sendSuggestion('Games')">Games</button>
             <button class="chat-suggestion" onclick="sendSuggestion('Contact')">Contact</button>
         </div>
         <div class="chat-input-area">
@@ -380,7 +406,7 @@
                 tempCtx.fillStyle = '#fff';
                 tempCtx.textAlign = 'center'; tempCtx.textBaseline = 'middle';
                 tempCtx.fillText('SULTAN', 512, 256);
-                const imageData = tempCtx.getImageData(0, 0, 1024, 512).data;
+                const imageData = tempCtx.getImageData(0,0, 1024, 512).data;
 
                 const particleCount = 8000;
                 const positions = new Float32Array(particleCount * 3);
@@ -497,7 +523,7 @@
         });
 
         // ==========================================
-        // 4. LOCAL JSON CHATBOT (No API)
+        // 4. CHATBOT (Sultan's Assistant)
         // ==========================================
         const chatToggleBtn = document.getElementById('chat-toggle-btn');
         const chatbotContainer = document.getElementById('chatbot-container');
@@ -520,20 +546,22 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         };
 
-        // JSON Dataset extracted from PDF
+        // JSON Dataset
         const resumeData = {
             experience: "Sultan has 8+ years of experience. He is currently a Senior Software Developer at Cloud Solutions (Mar 2019 - Present). Previously, he worked at Dure Technologies (2018-2019), NSE.IT (2017-2018), and Sportz Interactive (2015-2017).",
             skills: "He specializes in Mobile Tech (Flutter, Dart, Provider, Riverpod, Bloc, GetX), Frontend (React, Vue, Angular, JS/TS, HTML5, CSS3), and Backend/Data (NodeJS, MongoDB, MySQL, PHP, REST, GraphQL, CI/CD).",
             projects: "Major projects include the Dr Sulaiman Al Habib Patient App, Al Habib Mohemm Employee App, Doctor Application, Ibadah App, Hypespots, and the Worldline Merchant Portal.",
+            games: "Sultan has also developed mobile games available on the Google Play Store, including 'Cube King 3D' and 'Slice Dice'.",
             contact: "You can contact Sultan at khansultan1@gmail.com or +966 56 718 4134. He is based in Riyadh, Saudi Arabia.",
             education: "He holds a Master's in Computer Science from Lovely Professional University (2015) and a Bachelor's in Arts from VBSPU (2013).",
-            default: "I am a local AI trained on Sultan's resume. You can ask me about his 'experience', 'skills', 'projects', 'education', or 'contact' info."
+            default: "I am Sultan's Assistant. You can ask me about his 'experience', 'skills', 'projects', 'games', 'education', or 'contact' info."
         };
 
         function getLocalResponse(query) {
             const q = query.toLowerCase();
             if (q.includes('experience') || q.includes('work') || q.includes('job') || q.includes('company')) return resumeData.experience;
             if (q.includes('skill') || q.includes('tech') || q.includes('stack') || q.includes('flutter') || q.includes('dart')) return resumeData.skills;
+            if (q.includes('game') || q.includes('play store') || q.includes('cube king') || q.includes('slice dice')) return resumeData.games;
             if (q.includes('project') || q.includes('app') || q.includes('built') || q.includes('portfolio')) return resumeData.projects;
             if (q.includes('contact') || q.includes('email') || q.includes('hire') || q.includes('phone') || q.includes('reach')) return resumeData.contact;
             if (q.includes('education') || q.includes('degree') || q.includes('study') || q.includes('university')) return resumeData.education;
@@ -555,7 +583,7 @@
             // Simulate "thinking" delay for natural feel
             const typingIndicator = document.createElement('div');
             typingIndicator.classList.add('chat-message', 'bot-msg');
-            typingIndicator.innerText = 'Scanning resume...';
+            typingIndicator.innerText = 'Thinking...';
             chatMessages.appendChild(typingIndicator);
 
             setTimeout(() => {
