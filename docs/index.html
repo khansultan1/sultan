@@ -3,20 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sultan Khan | Creative Technologist & AI Engineer</title>
-    <meta name="description" content="An interactive digital universe showcasing the work of Sultan Khan - Senior Flutter Developer, AI Engineer, and Creative Technologist.">
-    
-    <!-- Open Graph / Social -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Sultan Khan | Creative Technologist">
-    <meta property="og:description" content="Senior Flutter Developer, AI Engineer, and Creative Technologist.">
+    <title>Sultan Khan | Senior Software Developer & Mobile Architect</title>
+    <meta name="description" content="8+ years experienced Software Developer specializing in Flutter, Dart, and mobile architecture. Based in Riyadh, Saudi Arabia.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
 
-    <!-- Favicon (Inline SVG) -->
+    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23050505%22 stroke=%22%2300f5d4%22 stroke-width=%225%22/></svg>" />
 
     <style>
@@ -42,7 +37,7 @@
 
         ::selection { background: var(--accent-cyan); color: #000; }
 
-        /* Custom Cursor (Disabled on touch devices) */
+        /* Custom Cursor */
         @media (hover: hover) and (pointer: fine) {
             html, body { cursor: none; }
             .cursor-dot, .cursor-outline {
@@ -56,7 +51,7 @@
             .cursor-hover .cursor-outline { width: 80px; height: 80px; background: rgba(0, 245, 212, 0.1); border-color: transparent; }
         }
 
-        /* Noise Texture Overlay */
+        /* Noise Texture */
         .noise {
             position: fixed; inset: 0; z-index: 100; pointer-events: none;
             opacity: 0.03; mix-blend-mode: overlay;
@@ -73,10 +68,8 @@
         .loader-bar { width: 200px; height: 2px; background: rgba(255,255,255,0.1); overflow: hidden; }
         .loader-fill { width: 0%; height: 100%; background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan); }
 
-        /* Three.js Canvas */
-        #webgl-canvas {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1;
-        }
+        /* WebGL Canvas */
+        #webgl-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; }
 
         /* Navigation */
         nav {
@@ -90,11 +83,8 @@
         .nav-links { display: flex; gap: 32px; }
         .nav-links a { font-family: 'JetBrains Mono'; font-size: 11px; text-transform: uppercase; color: rgba(255,255,255,0.6); transition: color 0.3s; text-decoration: none; }
         .nav-links a:hover { color: var(--text); }
-        .audio-toggle { background: none; border: 1px solid var(--border); padding: 8px 12px; border-radius: 20px; color: var(--text); cursor: none; display: flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono'; font-size: 10px; }
-        .audio-bar { width: 2px; height: 10px; background: var(--accent-cyan); animation: pulse 1s infinite ease-in-out; }
-        .audio-bar:nth-child(2) { animation-delay: 0.2s; }
-        .audio-bar:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes pulse { 0%, 100% { height: 4px; } 50% { height: 12px; } }
+        .nav-cta { font-family: 'JetBrains Mono'; font-size: 11px; text-transform: uppercase; color: var(--bg); background: var(--accent-cyan); padding: 10px 20px; border-radius: 30px; text-decoration: none; transition: transform 0.3s; }
+        .nav-cta:hover { transform: scale(1.05); }
 
         /* Layout */
         .content-wrapper { position: relative; z-index: 2; }
@@ -103,6 +93,12 @@
         .hero-section { align-items: center; text-align: center; }
         .hero-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(48px, 12vw, 200px); line-height: 0.9; letter-spacing: -0.05em; opacity: 0; transform: translateY(40px); pointer-events: none; }
         .hero-subtitle { font-family: 'JetBrains Mono'; font-size: 14px; color: var(--accent-cyan); margin-top: 24px; opacity: 0; letter-spacing: 2px; text-transform: uppercase; pointer-events: none; }
+        
+        .hero-btns { margin-top: 40px; display: flex; gap: 16px; opacity: 0; }
+        .btn { padding: 16px 32px; border-radius: 40px; font-family: 'JetBrains Mono'; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: all 0.3s ease; border: none; cursor: none; }
+        .btn-primary { background: var(--accent-cyan); color: var(--bg); }
+        .btn-outline { border: 1px solid var(--border); color: var(--text); background: transparent; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 245, 212, 0.2); }
 
         /* Glass Cards */
         .glass { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; padding: 32px; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border 0.4s; }
@@ -111,10 +107,16 @@
         .section-title { font-family: 'Syne', sans-serif; font-size: clamp(32px, 5vw, 64px); margin-bottom: 64px; font-weight: 600; }
         .section-num { color: var(--accent-cyan); font-family: 'JetBrains Mono'; font-size: 14px; display: block; margin-bottom: 12px; }
 
-        /* Skills 3D Orbit */
-        .orbit-container { perspective: 1000px; height: 600px; position: relative; display: flex; justify-content: center; align-items: center; }
+        /* Skills Orbit & Grid */
+        .orbit-container { perspective: 1000px; height: 700px; position: relative; display: flex; justify-content: center; align-items: center; margin-bottom: 80px; }
         .orbit-ring { position: absolute; border: 1px dashed rgba(255,255,255,0.1); border-radius: 50%; transform-style: preserve-3d; }
-        .skill-node { position: absolute; padding: 12px 20px; background: rgba(5,5,5,0.8); border: 1px solid var(--border); border-radius: 12px; font-family: 'JetBrains Mono'; font-size: 12px; backdrop-filter: blur(4px); box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        .skill-node { position: absolute; padding: 10px 18px; background: rgba(5,5,5,0.8); border: 1px solid var(--border); border-radius: 12px; font-family: 'JetBrains Mono'; font-size: 12px; backdrop-filter: blur(4px); box-shadow: 0 0 20px rgba(0,0,0,0.5); white-space: nowrap; }
+        
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .skill-category h3 { font-family: 'Syne'; font-size: 20px; margin-bottom: 16px; color: var(--accent-cyan); }
+        .skill-list { list-style: none; }
+        .skill-list li { color: var(--muted); font-size: 14px; margin-bottom: 12px; padding-left: 16px; position: relative; line-height: 1.5; }
+        .skill-list li::before { content: '▹'; position: absolute; left: 0; color: var(--accent-purple); }
 
         /* Timeline */
         .timeline-track { display: flex; flex-direction: column; gap: 48px; position: relative; padding-left: 40px; max-width: 800px; }
@@ -128,22 +130,44 @@
         .project-bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.4; transition: transform 0.6s ease, opacity 0.6s ease; }
         .project-card:hover .project-bg { transform: scale(1.1); opacity: 0.6; }
         .project-content { position: relative; z-index: 2; padding: 32px; background: linear-gradient(0deg, rgba(5,5,5,0.9) 0%, transparent 100%); }
-        .project-title { font-family: 'Syne', sans-serif; font-size: 28px; margin-bottom: 8px; }
+        .project-title { font-family: 'Syne', sans-serif; font-size: 24px; margin-bottom: 8px; }
         .project-tags { display: flex; gap: 8px; flex-wrap: wrap; }
         .tag { font-family: 'JetBrains Mono'; font-size: 10px; color: var(--accent-cyan); border: 1px solid var(--border); padding: 4px 8px; border-radius: 4px; }
 
         /* Footer */
         footer { padding: 80px 48px; border-top: 1px solid var(--border); text-align: center; }
         .footer-clock { font-family: 'JetBrains Mono'; color: var(--muted); font-size: 12px; margin-top: 32px; }
-        .fps-counter { position: fixed; bottom: 16px; right: 16px; font-family: 'JetBrains Mono'; font-size: 10px; color: var(--accent-purple); z-index: 100; display: none; }
-        .fps-visible { display: block; }
+        .contact-info { display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap; }
+        .contact-item { color: var(--muted); text-decoration: none; font-family: 'JetBrains Mono'; font-size: 14px; transition: color 0.3s; }
+        .contact-item:hover { color: var(--accent-cyan); }
+
+        /* AI Chatbot */
+        .chat-toggle-btn { position: fixed; bottom: 32px; right: 32px; width: 60px; height: 60px; background: var(--accent-cyan); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: none; z-index: 100; box-shadow: 0 0 20px rgba(0, 245, 212, 0.4); border: none; }
+        .chat-toggle-btn svg { width: 24px; height: 24px; fill: var(--bg); }
+        
+        .chatbot-container { position: fixed; bottom: 110px; right: 32px; width: 380px; height: 500px; background: rgba(5, 5, 5, 0.9); border: 1px solid var(--accent-cyan); border-radius: 16px; backdrop-filter: blur(20px); z-index: 100; display: flex; flex-direction: column; transform: scale(0); transform-origin: bottom right; transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .chatbot-visible { transform: scale(1); }
+        .chat-header { padding: 16px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .chat-title { font-family: 'Syne'; font-size: 14px; color: var(--accent-cyan); }
+        .chat-close { background: none; border: none; color: var(--muted); cursor: none; font-size: 16px; }
+        .chat-messages { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+        .chat-message { max-width: 80%; padding: 10px 14px; border-radius: 12px; font-size: 13px; line-height: 1.4; }
+        .user-msg { background: var(--accent-cyan); color: var(--bg); align-self: flex-end; }
+        .bot-msg { background: rgba(255,255,255,0.05); color: var(--text); align-self: flex-start; border: 1px solid var(--border); }
+        .chat-input-area { padding: 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
+        .chat-input { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; padding: 10px; color: var(--text); font-family: 'Inter'; outline: none; }
+        .chat-send-btn { background: var(--accent-cyan); color: var(--bg); border: none; padding: 0 16px; border-radius: 8px; cursor: none; font-weight: bold; }
 
         /* Responsive */
         @media (max-width: 768px) {
             nav { padding: 16px 24px; }
             .nav-links { display: none; }
             section { padding: 80px 24px; }
-            .orbit-container { height: 400px; transform: scale(0.7); }
+            .orbit-container { height: 500px; transform: scale(0.7); }
+            .hero-btns { flex-direction: column; width: 100%; }
+            .btn { width: 100%; text-align: center; }
+            .chatbot-container { width: calc(100% - 32px); right: 16px; bottom: 90px; height: 60vh; }
+            .chat-toggle-btn { right: 16px; bottom: 16px; }
         }
     </style>
 </head>
@@ -162,16 +186,8 @@
         <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
     </div>
 
-    <!-- Audio Ambient Toggle -->
-    <audio id="ambient-audio" loop>
-        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
-    </audio>
-
     <!-- WebGL Canvas -->
     <canvas id="webgl-canvas"></canvas>
-
-    <!-- FPS Counter -->
-    <div class="fps-counter" id="fps">FPS: 60</div>
 
     <!-- Navigation -->
     <nav>
@@ -179,14 +195,10 @@
         <div class="nav-links">
             <a href="#about" class="nav-link">About</a>
             <a href="#skills" class="nav-link">Skills</a>
-            <a href="#work" class="nav-link">Work</a>
+            <a href="#experience" class="nav-link">Experience</a>
             <a href="#projects" class="nav-link">Projects</a>
-            <a href="#contact" class="nav-link">Contact</a>
         </div>
-        <button class="audio-toggle" id="audio-btn">
-            <div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div>
-            <span id="audio-label">SOUND OFF</span>
-        </button>
+        <a href="Sultan-Khan-Resume.pdf" download class="nav-cta">Download CV</a>
     </nav>
 
     <div class="content-wrapper">
@@ -194,7 +206,12 @@
         <!-- Hero -->
         <section class="hero-section" id="hero">
             <h1 class="hero-title" id="hero-title">SULTAN<br>KHAN</h1>
-            <p class="hero-subtitle" id="hero-subtitle">Senior Flutter Architect // AI Engineer // Creative Technologist</p>
+            <p class="hero-subtitle" id="hero-subtitle">Senior Software Developer // 8+ Years Experience // Riyadh, KSA</p>
+            
+            <div class="hero-btns" id="hero-btns">
+                <a href="Sultan-Khan-Resume.pdf" download class="btn btn-primary">Download Resume</a>
+                <button class="btn btn-outline" id="open-chat-btn">Get In Touch</button>
+            </div>
         </section>
 
         <!-- About -->
@@ -203,38 +220,88 @@
             <h2 class="section-title">Engineering the Future.</h2>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 1200px;">
                 <div class="glass">
-                    <p style="font-size: 24px; font-family: 'Syne'; line-height: 1.4;">I build mobile products and AI systems that scale to millions. With over 6 years in production architecture, I bridge the gap between complex engineering and premium design.</p>
+                    <p style="font-size: 24px; font-family: 'Syne'; line-height: 1.4;">Driven tech enthusiast with a flair for creating outstanding web and mobile experiences. Keen to join dynamic teams and push the boundaries of UX and mobile architecture.</p>
                 </div>
                 <div class="glass">
-                    <p style="color: var(--muted); line-height: 1.6;">Currently focused on Flutter, AI Agents, n8n Automation, and WebGL. My goal is to become one of the world's best creative software engineers, building digital universes used by millions.</p>
+                    <p style="color: var(--muted); line-height: 1.6;">With over 8 years of experience, I specialize in Front-End Development and Mobile Technologies. My solid history spans diverse sectors, including sports and healthcare, where I've built applications serving millions of users.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Orbit -->
+        <!-- Skills -->
         <section id="skills">
             <span class="section-num">02 / CAPABILITIES</span>
-            <h2 class="section-title">The Tech Orbit.</h2>
+            <h2 class="section-title">The Tech Stack.</h2>
+            
+            <!-- 3D Orbit -->
             <div class="orbit-container" id="orbit-container">
-                <div class="orbit-ring" style="width: 400px; height: 400px; animation: spin 20s linear infinite;"></div>
-                <div class="orbit-ring" style="width: 600px; height: 600px; animation: spin 30s linear infinite reverse;"></div>
+                <div class="orbit-ring" style="width: 300px; height: 300px; animation: spin 15s linear infinite;"></div>
+                <div class="orbit-ring" style="width: 500px; height: 500px; animation: spin 25s linear infinite reverse;"></div>
+                <div class="orbit-ring" style="width: 700px; height: 700px; animation: spin 35s linear infinite;"></div>
+            </div>
+
+            <!-- Categorized Skills -->
+            <div class="skills-grid">
+                <div class="glass skill-category">
+                    <h3>Mobile Technologies</h3>
+                    <ul class="skill-list">
+                        <li><strong>Dart Language:</strong> Master async code, null safety, and OOP.</li>
+                        <li><strong>Flutter Framework:</strong> Stateless and stateful custom layouts.</li>
+                        <li><strong>State Management:</strong> Provider, Riverpod, Bloc, and GetX.</li>
+                        <li><strong>Platform Channels:</strong> Native iOS (Swift) & Android (Kotlin).</li>
+                        <li><strong>Mobile UI/UX:</strong> Material Design & Cupertino guidelines.</li>
+                    </ul>
+                </div>
+                <div class="glass skill-category">
+                    <h3>Frontend Web Skills</h3>
+                    <ul class="skill-list">
+                        <li><strong>HTML5 & CSS3:</strong> Flexbox, Grid, animations.</li>
+                        <li><strong>JavaScript / TypeScript:</strong> Logic, DOM, typed variables.</li>
+                        <li><strong>Web Frameworks:</strong> React, Vue, and Angular integration.</li>
+                        <li><strong>Responsive Design:</strong> Flawless UI on all screen sizes.</li>
+                    </ul>
+                </div>
+                <div class="glass skill-category">
+                    <h3>Data, APIs & Tools</h3>
+                    <ul class="skill-list">
+                        <li><strong>REST & GraphQL:</strong> HTTP/JSON server connections.</li>
+                        <li><strong>Local Storage:</strong> Hive, Isar, and SQLite offline data.</li>
+                        <li><strong>Backend:</strong> NodeJS, MongoDB, MySQL, and PHP.</li>
+                        <li><strong>Git & GitHub:</strong> Version control & team collaboration.</li>
+                        <li><strong>CI/CD:</strong> Automated testing & GitHub Actions.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <!-- Timeline / Experience -->
-        <section id="work">
+        <!-- Experience -->
+        <section id="experience">
             <span class="section-num">03 / TRAJECTORY</span>
             <h2 class="section-title">Career Portals.</h2>
             <div class="timeline-track">
                 <div class="timeline-item glass">
-                    <span style="color: var(--accent-cyan); font-family: 'JetBrains Mono'; font-size: 12px;">2019 — PRESENT</span>
-                    <h3 style="font-family: 'Syne'; font-size: 28px; margin: 8px 0;">Senior Software Developer, Flutter</h3>
-                    <p style="color: var(--muted);">Led architecture for patient apps serving 2M+ users. Built internal ecosystems for 15,000+ employees. Drove quality via mentoring and release improvements.</p>
+                    <span style="color: var(--accent-cyan); font-family: 'JetBrains Mono'; font-size: 12px;">MAR 2019 — PRESENT</span>
+                    <h3 style="font-family: 'Syne'; font-size: 24px; margin: 8px 0;">Senior Software Developer</h3>
+                    <p style="color: var(--muted); margin-bottom: 8px;">Cloud Solutions</p>
+                    <p style="color: var(--muted);">Leading mobile application development for major healthcare and enterprise systems. Architecting scalable solutions and optimizing cross-platform delivery.</p>
                 </div>
                 <div class="timeline-item glass">
-                    <span style="color: var(--accent-purple); font-family: 'JetBrains Mono'; font-size: 12px;">CURRENT FOCUS</span>
-                    <h3 style="font-family: 'Syne'; font-size: 28px; margin: 8px 0;">AI Engineering & Automation</h3>
-                    <p style="color: var(--muted);">Building AI Agents, Halal AI Stock Analyzer, AI Travel Assistant, and automated video pipelines using n8n, OpenAI, and Python.</p>
+                    <span style="color: var(--accent-purple); font-family: 'JetBrains Mono'; font-size: 12px;">MAR 2018 — MAR 2019</span>
+                    <h3 style="font-family: 'Syne'; font-size: 24px; margin: 8px 0;">Software Engineer</h3>
+                    <p style="color: var(--muted); margin-bottom: 8px;">Dure Technologies Pvt Ltd</p>
+                    <p style="color: var(--muted);">Developed interactive web portals and contributed to large-scale frontend architecture projects.</p>
+                </div>
+                <div class="timeline-item glass">
+                    <span style="color: var(--accent-cyan); font-family: 'JetBrains Mono'; font-size: 12px;">APR 2017 — MAR 2018</span>
+                    <h3 style="font-family: 'Syne'; font-size: 24px; margin: 8px 0;">Associate System Analyst</h3>
+                    <p style="color: var(--muted); margin-bottom: 8px;">NSE.IT Limited</p>
+                    <p style="color: var(--muted);">Analyzed system requirements and maintained critical financial software infrastructure.</p>
+                </div>
+                <div class="timeline-item glass">
+                    <span style="color: var(--accent-purple); font-family: 'JetBrains Mono'; font-size: 12px;">MAR 2015 — APR 2017</span>
+                    <h3 style="font-family: 'Syne'; font-size: 24px; margin: 8px 0;">Associate (JavaScript)</h3>
+                    <p style="color: var(--muted); margin-bottom: 8px;">Sportz Interactive Pvt. Ltd</p>
+                    <p style="color: var(--muted);">Built dynamic sports infographics and real-time data visualizations using JavaScript and Angular.</p>
                 </div>
             </div>
         </section>
@@ -242,44 +309,123 @@
         <!-- Projects -->
         <section id="projects">
             <span class="section-num">04 / CREATIONS</span>
-            <h2 class="section-title">Interactive Universes.</h2>
+            <h2 class="section-title">Major Projects.</h2>
             <div class="projects-grid">
+                <!-- Project 1 -->
                 <div class="project-card glass">
                     <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?q=80&w=2070&auto=format&fit=crop');"></div>
                     <div class="project-content">
-                        <h3 class="project-title">AI Travel Assistant</h3>
-                        <div class="project-tags">
-                            <span class="tag">Flutter</span><span class="tag">Gemini</span><span class="tag">Supabase</span>
-                        </div>
+                        <h3 class="project-title">Dr Sulaiman Al Habib App</h3>
+                        <div class="project-tags"><span class="tag">Flutter</span><span class="tag">Healthcare</span><span class="tag">2M+ Users</span></div>
                     </div>
                 </div>
+                <!-- Project 2 -->
                 <div class="project-card glass">
                     <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1642790106117-e829e14a795f?q=80&w=2128&auto=format&fit=crop');"></div>
                     <div class="project-content">
-                        <h3 class="project-title">Halal Stock Analyzer</h3>
-                        <div class="project-tags">
-                            <span class="tag">Python</span><span class="tag">OpenAI</span><span class="tag">Data Viz</span>
-                        </div>
+                        <h3 class="project-title">Al Habib Mohemm (E-Services)</h3>
+                        <div class="project-tags"><span class="tag">Flutter</span><span class="tag">Enterprise</span><span class="tag">15k+ Users</span></div>
                     </div>
                 </div>
+                <!-- Project 3 -->
                 <div class="project-card glass">
                     <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop');"></div>
                     <div class="project-content">
-                        <h3 class="project-title">Kids Learning Platform</h3>
-                        <div class="project-tags">
-                            <span class="tag">Flutter</span><span class="tag">Rive</span><span class="tag">Firebase</span>
-                        </div>
+                        <h3 class="project-title">Doctor Application</h3>
+                        <div class="project-tags"><span class="tag">Flutter</span><span class="tag">Physician</span><span class="tag">REST APIs</span></div>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="project-card glass">
+                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Ibadah App</h3>
+                        <div class="project-tags"><span class="tag">Flutter</span><span class="tag">Non-Profit</span><span class="tag">2024</span></div>
+                    </div>
+                </div>
+                <!-- Project 5 -->
+                <div class="project-card glass">
+                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Hypespots</h3>
+                        <div class="project-tags"><span class="tag">IONIC 3</span><span class="tag">Angular 5</span><span class="tag">Social</span></div>
+                    </div>
+                </div>
+                <!-- Project 6 -->
+                <div class="project-card glass">
+                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Worldline Merchant Portal</h3>
+                        <div class="project-tags"><span class="tag">Angular</span><span class="tag">Fintech</span><span class="tag">Web Portal</span></div>
+                    </div>
+                </div>
+                <!-- Project 7 -->
+                <div class="project-card glass">
+                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">RTM Mealtime Monitoring</h3>
+                        <div class="project-tags"><span class="tag">Access Health</span><span class="tag">Web App</span><span class="tag">UI/UX</span></div>
+                    </div>
+                </div>
+                <!-- Project 8 -->
+                <div class="project-card glass">
+                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Race Lance (Handicapping)</h3>
+                        <div class="project-tags"><span class="tag">JavaScript</span><span class="tag">Data Viz</span><span class="tag">Sports</span></div>
+                    </div>
+                </div>
+                <!-- Project 9 -->
+                <div class="project-card glass">
+                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Infographics Engine</h3>
+                        <div class="project-tags"><span class="tag">Angular</span><span class="tag">Real-time</span><span class="tag">Engine</span></div>
+                    </div>
+                </div>
+                <!-- Project 10 -->
+                <div class="project-card glass">
+                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Worldline On The Go</h3>
+                        <div class="project-tags"><span class="tag">IONIC 1</span><span class="tag">AngularJS</span><span class="tag">Mobile</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact / Footer -->
+        <!-- Footer -->
         <footer id="contact">
+            <span class="section-num">05 / CONTACT</span>
             <h2 class="section-title" style="margin-bottom: 32px;">Let's build the impossible.</h2>
             <a href="mailto:khansultan1@gmail.com" style="font-family: 'Syne'; font-size: clamp(24px, 4vw, 48px); text-decoration: none; color: var(--text); border-bottom: 2px solid var(--accent-cyan); padding-bottom: 8px;">khansultan1@gmail.com</a>
+            <div class="contact-info">
+                <a href="tel:+966567184134" class="contact-item">+966 56 718 4134</a>
+                <a href="https://github.com/khansultan1" target="_blank" class="contact-item">GitHub</a>
+                <a href="https://stackoverflow.com/users/4252231/sultan-khan" target="_blank" class="contact-item">StackOverflow</a>
+                <a href="https://medium.com/@khansultan1" target="_blank" class="contact-item">Medium</a>
+            </div>
             <div class="footer-clock" id="clock">LOADING SYSTEM TIME...</div>
         </footer>
+    </div>
+
+    <!-- AI Chatbot UI -->
+    <button class="chat-toggle-btn" id="chat-toggle-btn">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+    </button>
+
+    <div class="chatbot-container" id="chatbot-container">
+        <div class="chat-header">
+            <div class="chat-title">AI Assistant // Sultan's Universe</div>
+            <button class="chat-close" id="chat-close">✕</button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="chat-message bot-msg">Hello! I am Sultan's AI Assistant. Ask me about his experience, skills, or projects!</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chat-input" placeholder="Type your message..." autocomplete="off">
+            <button class="chat-send-btn" id="chat-send-btn">Send</button>
+        </div>
     </div>
 
     <!-- Libraries -->
@@ -294,254 +440,213 @@
         // ==========================================
         gsap.registerPlugin(ScrollTrigger);
         const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-
-        // Check for reduced motion
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        // ==========================================
-        // 2. CUSTOM CURSOR
-        // ==========================================
+        // Custom Cursor
         const dot = document.getElementById('cursor-dot');
         const outline = document.getElementById('cursor-outline');
         let outlineX = mouse.x, outlineY = mouse.y;
 
         window.addEventListener('mousemove', e => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-            if(dot) dot.style.left = `${mouse.x}px`;
-            if(dot) dot.style.top = `${mouse.y}px`;
+            mouse.x = e.clientX; mouse.y = e.clientY;
+            if(dot) { dot.style.left = `${mouse.x}px`; dot.style.top = `${mouse.y}px`; }
         });
 
         const animateCursor = () => {
             outlineX += (mouse.x - outlineX) * 0.15;
             outlineY += (mouse.y - outlineY) * 0.15;
-            if(outline) outline.style.left = `${outlineX}px`;
-            if(outline) outline.style.top = `${outlineY}px`;
+            if(outline) { outline.style.left = `${outlineX}px`; outline.style.top = `${outlineY}px`; }
             requestAnimationFrame(animateCursor);
         };
         if (!prefersReducedMotion) animateCursor();
 
-        document.querySelectorAll('a, button, .glass, .project-card').forEach(el => {
+        document.querySelectorAll('a, button, .glass, .project-card, input').forEach(el => {
             el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
             el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
         });
 
-        // ==========================================
-        // 3. SMOOTH SCROLL (LENIS)
-        // ==========================================
+        // Smooth Scroll
         let lenis;
-        if (!prefersReducedMotion) {
+        if (!prefersReducedMotion && typeof Lenis !== 'undefined') {
             lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
             lenis.on('scroll', ScrollTrigger.update);
             gsap.ticker.add((time) => lenis.raf(time * 1000));
             gsap.ticker.lagSmoothing(0);
+        }
 
-            // Smooth scroll for nav links
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const target = document.querySelector(link.getAttribute('href'));
-                    if (target) lenis.scrollTo(target, { offset: -50 });
-                });
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    if (lenis) lenis.scrollTo(target, { offset: -50 });
+                    else target.scrollIntoView({ behavior: 'smooth' });
+                }
             });
-        }
-
-        // ==========================================
-        // 4. THREE.js PARTICLE SYSTEM (HERO)
-        // ==========================================
-        const canvas = document.getElementById('webgl-canvas');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 50;
-
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-        // Generate Text Target Points
-        const tempCanvas = document.createElement('canvas');
-        tempCanvas.width = 1024; tempCanvas.height = 512;
-        const tempCtx = tempCanvas.getContext('2d');
-        tempCtx.fillStyle = '#000'; tempCtx.fillRect(0,0,1024,512);
-        tempCtx.font = 'Bold 180px Syne, sans-serif';
-        tempCtx.fillStyle = '#fff';
-        tempCtx.textAlign = 'center';
-        tempCtx.textBaseline = 'middle';
-        tempCtx.fillText('SULTAN', 512, 256);
-        const imageData = tempCtx.getImageData(0, 0, 1024, 512).data;
-
-        // Particles
-        const particleCount = 8000;
-        const positions = new Float32Array(particleCount * 3);
-        const targets = new Float32Array(particleCount * 3);
-        const colors = new Float32Array(particleCount * 3);
-
-        for (let i = 0; i < particleCount; i++) {
-            const i3 = i * 3;
-            // Random initial position (Sphere)
-            const r = 100;
-            const theta = Math.random() * Math.PI * 2;
-            const phi = Math.acos(2 * Math.random() - 1);
-            positions[i3] = r * Math.sin(phi) * Math.cos(theta);
-            positions[i3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-            positions[i3 + 2] = r * Math.cos(phi);
-
-            // Target position (Text pixels)
-            let validPixel = false;
-            while (!validPixel) {
-                const x = Math.floor(Math.random() * 1024);
-                const y = Math.floor(Math.random() * 512);
-                const index = (y * 1024 + x) * 4;
-                if (imageData[index] > 128) {
-                    targets[i3] = (x - 512) / 10;
-                    targets[i3 + 1] = -(y - 256) / 10;
-                    targets[i3 + 2] = (Math.random() - 0.5) * 5;
-                    validPixel = true;
-                }
-            }
-
-            // Colors (Cyan, Purple, White)
-            const colorChoice = Math.random();
-            if (colorChoice > 0.8) { colors[i3] = 0.0; colors[i3+1] = 0.96; colors[i3+2] = 0.83; } 
-            else if (colorChoice > 0.6) { colors[i3] = 0.61; colors[i3+1] = 0.36; colors[i3+2] = 0.89; } 
-            else { colors[i3] = 1; colors[i3+1] = 1; colors[i3+2] = 1; } 
-        }
-
-        const particleGeometry = new THREE.BufferGeometry();
-        particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        particleGeometry.setAttribute('aTarget', new THREE.BufferAttribute(targets, 3));
-        particleGeometry.setAttribute('aColor', new THREE.BufferAttribute(colors, 3));
-
-        // Custom Shader Material
-        const particleMaterial = new THREE.ShaderMaterial({
-            uniforms: {
-                uTime: { value: 0 },
-                uMouse: { value: new THREE.Vector2(0, 0) },
-                uProgress: { value: 0 }
-            },
-            vertexShader: `
-                attribute vec3 aTarget;
-                attribute vec3 aColor;
-                uniform float uTime;
-                uniform vec2 uMouse;
-                uniform float uProgress;
-                varying vec3 vColor;
-                
-                void main() {
-                    vColor = aColor;
-                    vec3 pos = mix(position, aTarget, uProgress);
-                    
-                    // Mouse Repulsion
-                    vec2 dir = uMouse - vec2(pos.x, pos.y);
-                    float dist = length(dir);
-                    if (dist < 10.0) {
-                        pos.x -= dir.x * (1.0 - dist/10.0) * 2.0;
-                        pos.y -= dir.y * (1.0 - dist/10.0) * 2.0;
-                    }
-
-                    pos.z += sin(uTime + pos.x * 0.5) * 0.5;
-                    
-                    vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-                    gl_PointSize = 3.0 * (300.0 / -mvPosition.z);
-                    gl_Position = projectionMatrix * mvPosition;
-                }
-            `,
-            fragmentShader: `
-                varying vec3 vColor;
-                void main() {
-                    float dist = length(gl_PointCoord - vec2(0.5));
-                    if (dist > 0.5) discard;
-                    gl_FragColor = vec4(vColor, 1.0 - dist * 2.0);
-                }
-            `,
-            transparent: true,
-            blending: THREE.AdditiveBlending,
-            depthWrite: false
-        });
-
-        const particles = new THREE.Points(particleGeometry, particleMaterial);
-        scene.add(particles);
-
-        // Mouse tracking for WebGL
-        const webglMouse = new THREE.Vector2();
-        window.addEventListener('mousemove', e => {
-            webglMouse.x = ((e.clientX / window.innerWidth) - 0.5) * 40;
-            webglMouse.y = -((e.clientY / window.innerHeight) - 0.5) * 20;
-        });
-
-        // Resize
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
         // ==========================================
-        // 5. LOADER & ANIMATIONS
+        // 2. LOADER & THREE.JS
         // ==========================================
         const loaderFill = document.getElementById('loader-fill');
         const loader = document.getElementById('loader');
         const tl = gsap.timeline();
 
-        // Fake loader progress
-        gsap.to(loaderFill, { width: '100%', duration: 2, ease: 'power2.inOut', onComplete: () => {
-            tl.to(loader, { opacity: 0, duration: 0.8, pointerEvents: 'none' });
-            tl.to(particleMaterial.uniforms.uProgress, { value: 1, duration: 2.5, ease: 'power3.out' }, '-=0.4');
-            tl.to('.hero-title', { opacity: 1, y: 0, duration: 1.5, ease: 'power4.out' }, '-=1.5');
-            tl.to('.hero-subtitle', { opacity: 1, duration: 1, ease: 'power4.out' }, '-=1');
-        }});
+        gsap.to(loaderFill, { width: '100%', duration: 2, ease: 'power2.inOut', onComplete: initScene });
+
+        function initScene() {
+            let webglActive = false;
+            try {
+                if (typeof THREE === 'undefined') throw new Error("Three.js not loaded");
+                
+                const canvas = document.getElementById('webgl-canvas');
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.z = 50;
+                const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = 1024; tempCanvas.height = 512;
+                const tempCtx = tempCanvas.getContext('2d');
+                tempCtx.fillStyle = '#000'; tempCtx.fillRect(0,0,1024,512);
+                tempCtx.font = 'Bold 180px Syne, sans-serif';
+                tempCtx.fillStyle = '#fff';
+                tempCtx.textAlign = 'center'; tempCtx.textBaseline = 'middle';
+                tempCtx.fillText('SULTAN', 512, 256);
+                const imageData = tempCtx.getImageData(0, 0, 1024, 512).data;
+
+                const particleCount = 8000;
+                const positions = new Float32Array(particleCount * 3);
+                const targets = new Float32Array(particleCount * 3);
+                const colors = new Float32Array(particleCount * 3);
+
+                for (let i = 0; i < particleCount; i++) {
+                    const i3 = i * 3;
+                    const r = 100; const theta = Math.random() * Math.PI * 2; const phi = Math.acos(2 * Math.random() - 1);
+                    positions[i3] = r * Math.sin(phi) * Math.cos(theta);
+                    positions[i3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+                    positions[i3 + 2] = r * Math.cos(phi);
+
+                    let validPixel = false;
+                    while (!validPixel) {
+                        const x = Math.floor(Math.random() * 1024); const y = Math.floor(Math.random() * 512);
+                        const index = (y * 1024 + x) * 4;
+                        if (imageData[index] > 128) {
+                            targets[i3] = (x - 512) / 10; targets[i3 + 1] = -(y - 256) / 10; targets[i3 + 2] = (Math.random() - 0.5) * 5;
+                            validPixel = true;
+                        }
+                    }
+                    const colorChoice = Math.random();
+                    if (colorChoice > 0.8) { colors[i3] = 0.0; colors[i3+1] = 0.96; colors[i3+2] = 0.83; } 
+                    else if (colorChoice > 0.6) { colors[i3] = 0.61; colors[i3+1] = 0.36; colors[i3+2] = 0.89; } 
+                    else { colors[i3] = 1; colors[i3+1] = 1; colors[i3+2] = 1; } 
+                }
+
+                const particleGeometry = new THREE.BufferGeometry();
+                particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                particleGeometry.setAttribute('aTarget', new THREE.BufferAttribute(targets, 3));
+                particleGeometry.setAttribute('aColor', new THREE.BufferAttribute(colors, 3));
+
+                const particleMaterial = new THREE.ShaderMaterial({
+                    uniforms: { uTime: { value: 0 }, uMouse: { value: new THREE.Vector2(0, 0) }, uProgress: { value: 0 } },
+                    vertexShader: `
+                        attribute vec3 aTarget; attribute vec3 aColor; uniform float uTime; uniform vec2 uMouse; uniform float uProgress; varying vec3 vColor;
+                        void main() {
+                            vColor = aColor; vec3 pos = mix(position, aTarget, uProgress);
+                            vec2 dir = uMouse - vec2(pos.x, pos.y); float dist = length(dir);
+                            if (dist < 10.0) { pos.x -= dir.x * (1.0 - dist/10.0) * 2.0; pos.y -= dir.y * (1.0 - dist/10.0) * 2.0; }
+                            pos.z += sin(uTime + pos.x * 0.5) * 0.5;
+                            vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
+                            gl_PointSize = 3.0 * (300.0 / -mvPosition.z); gl_Position = projectionMatrix * mvPosition;
+                        }
+                    `,
+                    fragmentShader: `varying vec3 vColor; void main() { float dist = length(gl_PointCoord - vec2(0.5)); if (dist > 0.5) discard; gl_FragColor = vec4(vColor, 1.0 - dist * 2.0); }`,
+                    transparent: true, blending: THREE.AdditiveBlending, depthWrite: false
+                });
+
+                const particles = new THREE.Points(particleGeometry, particleMaterial);
+                scene.add(particles);
+
+                const webglMouse = new THREE.Vector2();
+                window.addEventListener('mousemove', e => {
+                    webglMouse.x = ((e.clientX / window.innerWidth) - 0.5) * 40;
+                    webglMouse.y = -((e.clientY / window.innerHeight) - 0.5) * 20;
+                });
+
+                window.addEventListener('resize', () => {
+                    camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+
+                ScrollTrigger.create({
+                    trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true,
+                    onUpdate: (self) => { particleMaterial.uniforms.uProgress.value = 1 - self.progress; camera.position.z = 50 + self.progress * 30; }
+                });
+
+                const clock = new THREE.Clock();
+                function animate() {
+                    requestAnimationFrame(animate); const elapsed = clock.getElapsedTime();
+                    particleMaterial.uniforms.uTime.value = elapsed;
+                    particleMaterial.uniforms.uMouse.value.x += (webglMouse.x - particleMaterial.uniforms.uMouse.value.x) * 0.05;
+                    particleMaterial.uniforms.uMouse.value.y += (webglMouse.y - particleMaterial.uniforms.uMouse.value.y) * 0.05;
+                    particles.rotation.y = elapsed * 0.05; renderer.render(scene, camera);
+                }
+                animate(); webglActive = true;
+                
+                tl.to(loader, { opacity: 0, duration: 0.8, pointerEvents: 'none' });
+                tl.to(particleMaterial.uniforms.uProgress, { value: 1, duration: 2.5, ease: 'power3.out' }, '-=0.4');
+                tl.to('.hero-title', { opacity: 1, y: 0, duration: 1.5, ease: 'power4.out' }, '-=1.5');
+                tl.to('.hero-subtitle', { opacity: 1, duration: 1, ease: 'power4.out' }, '-=1');
+                tl.to('.hero-btns', { opacity: 1, duration: 1, ease: 'power4.out' }, '-=0.5');
+
+            } catch (error) {
+                console.error("WebGL initialization failed. Fallback enabled.", error);
+                tl.to(loader, { opacity: 0, duration: 0.4, pointerEvents: 'none' });
+                tl.to('.hero-title', { opacity: 1, y: 0, duration: 1, ease: 'power4.out' }, '-=0.2');
+                tl.to('.hero-subtitle', { opacity: 1, duration: 1, ease: 'power4.out' }, '-=0.8');
+                tl.to('.hero-btns', { opacity: 1, duration: 1, ease: 'power4.out' }, '-=0.5');
+                if(canvas) canvas.style.display = 'none';
+            }
+        }
 
         // Scroll Animations
         gsap.utils.toArray('section').forEach(section => {
             gsap.from(section.querySelectorAll('.glass, .section-title, .section-num'), {
-                opacity: 0,
-                y: 60,
-                duration: 1,
-                stagger: 0.1,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: section,
-                    start: 'top 70%',
-                    end: 'bottom bottom',
-                    toggleActions: 'play none none reverse'
-                }
+                opacity: 0, y: 60, duration: 1, stagger: 0.1, ease: 'power3.out',
+                scrollTrigger: { trigger: section, start: 'top 70%', end: 'bottom bottom', toggleActions: 'play none none reverse' }
             });
         });
 
-        // WebGL Scroll Effect
-        ScrollTrigger.create({
-            trigger: '#hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true,
-            onUpdate: (self) => {
-                particleMaterial.uniforms.uProgress.value = 1 - self.progress;
-                camera.position.z = 50 + self.progress * 30;
-            }
-        });
-
         // ==========================================
-        // 6. SKILLS ORBIT
+        // 3. SKILLS ORBIT (25+ Capabilities)
         // ==========================================
-        const skills = ['Flutter', 'Dart', 'AI', 'n8n', 'Three.js', 'NodeJS', 'Python', 'Supabase', 'WebGL', 'GSAP', 'Firebase'];
+        const skills = [
+            'Dart', 'Flutter', 'Firebase', 'GraphQL', 'REST', 
+            'Riverpod', 'Bloc', 'GetX', 'Provider', 'Vue JS', 
+            'Angular', 'React', 'JavaScript', 'TypeScript', 'HTML5', 
+            'CSS3', 'NodeJS', 'MongoDB', 'MySQL', 'PHP', 
+            'SQLite', 'Hive', 'GitHub', 'CI/CD', 'Python'
+        ];
         const orbitContainer = document.getElementById('orbit-container');
-        const orbitRadius = [200, 300];
+        // Expanding to 3 rings to accommodate 25 items
+        const orbitRadius = [150, 250, 350]; 
+        const orbitDurations = [18, 28, 38];
 
         skills.forEach((skill, i) => {
             const node = document.createElement('div');
-            node.className = 'skill-node';
+            node.className = 'skill-node'; 
             node.innerText = skill;
             orbitContainer.appendChild(node);
-
-            const radius = i % 2 === 0 ? orbitRadius[0] : orbitRadius[1];
-            const duration = i % 2 === 0 ? 20 : 30;
+            
+            const ringIndex = i % 3;
+            const radius = orbitRadius[ringIndex];
+            const duration = orbitDurations[ringIndex];
             const startAngle = (i / skills.length) * Math.PI * 2;
             
-            // Using GSAP modifiers to create circular motion
             gsap.to(node, {
-                duration: duration,
-                repeat: -1,
-                ease: "none",
+                duration: duration, repeat: -1, ease: "none",
                 modifiers: {
                     x: () => Math.cos(startAngle + (performance.now() / 1000) * (Math.PI * 2 / duration)) * radius,
                     y: () => Math.sin(startAngle + (performance.now() / 1000) * (Math.PI * 2 / duration)) * radius * 0.3, // Elliptical for 3D feel
@@ -551,79 +656,102 @@
         });
 
         // ==========================================
-        // 7. AMBIENT AUDIO
+        // 4. AI CHATBOT (GLM API)
         // ==========================================
-        const audioBtn = document.getElementById('audio-btn');
-        const audioLabel = document.getElementById('audio-label');
-        const audio = document.getElementById('ambient-audio');
-        let isPlaying = false;
+        const chatToggleBtn = document.getElementById('chat-toggle-btn');
+        const chatbotContainer = document.getElementById('chatbot-container');
+        const chatCloseBtn = document.getElementById('chat-close');
+        const openChatBtn = document.getElementById('open-chat-btn');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatSendBtn = document.getElementById('chat-send-btn');
 
-        audioBtn.addEventListener('click', () => {
-            if (isPlaying) {
-                audio.pause();
-                audioLabel.innerText = 'SOUND OFF';
-            } else {
-                audio.play().catch(e => console.log("Audio play blocked by browser"));
-                audioLabel.innerText = 'SOUND ON';
+        const toggleChatbot = () => chatbotContainer.classList.toggle('chatbot-visible');
+        chatToggleBtn.addEventListener('click', toggleChatbot);
+        chatCloseBtn.addEventListener('click', toggleChatbot);
+        openChatBtn.addEventListener('click', toggleChatbot);
+
+        const addMessage = (text, sender) => {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('chat-message', sender === 'user' ? 'user-msg' : 'bot-msg');
+            msgDiv.innerText = text;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        };
+
+        // SYSTEM PROMPT: Instructs the AI on how to behave
+        const systemPrompt = `
+            You are an AI assistant representing Sultan Khan, a Senior Software Developer based in Riyadh, Saudi Arabia.
+            Sultan has 8+ years of experience in Mobile (Flutter, Dart, Provider, Riverpod, Bloc, GetX), Frontend (React, Vue, Angular, JS/TS), and Backend (NodeJS, MongoDB, REST, GraphQL).
+            He has worked extensively in healthcare and sports sectors. Major projects include Dr Sulaiman Al Habib App, Al Habib Mohemm, Doctor App, Ibadah App, Hypespots, and Worldline Merchant Portal.
+            Answer questions professionally, concisely, and promote Sultan's skills. If asked about hiring or email, provide khansultan1@gmail.com.
+        `;
+
+        let chatHistory = [{ role: "system", content: systemPrompt }];
+
+        const sendChatMessage = async () => {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            addMessage(message, 'user');
+            chatHistory.push({ role: "user", content: message });
+            chatInput.value = '';
+            
+            // Typing indicator
+            const typingIndicator = document.createElement('div');
+            typingIndicator.classList.add('chat-message', 'bot-msg');
+            typingIndicator.innerText = 'Thinking...';
+            chatMessages.appendChild(typingIndicator);
+
+            // === GLM API CONFIGURATION ===
+            // Replace "YOUR_GLM_API_KEY_HERE" with your actual Zhipu AI / GLM API Key
+            const GLM_API_KEY = "YOUR_GLM_API_KEY_HERE"; 
+            const API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions";
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${GLM_API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        model: "glm-4", // or glm-3-turbo
+                        messages: chatHistory,
+                        temperature: 0.7
+                    })
+                });
+
+                chatMessages.removeChild(typingIndicator);
+
+                if (!response.ok) throw new Error("API request failed");
+                
+                const data = await response.json();
+                const botReply = data.choices[0].message.content;
+                
+                addMessage(botReply, 'bot');
+                chatHistory.push({ role: "assistant", content: botReply });
+
+            } catch (error) {
+                chatMessages.removeChild(typingIndicator);
+                addMessage("I'm currently in demo mode. Add your GLM API key to enable full AI responses. For direct contact, email khansultan1@gmail.com.", 'bot');
+                console.error("GLM API Error (Expected if key is missing):", error);
             }
-            isPlaying = !isPlaying;
-        });
+        };
 
-        // ==========================================
-        // 8. LIVE CLOCK & EASTER EGGS
-        // ==========================================
+        chatSendBtn.addEventListener('click', sendChatMessage);
+        chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendChatMessage(); });
+
+        // Live Clock
         function updateClock() {
             const now = new Date();
             const timeStr = now.toLocaleTimeString('en-US', { hour12: false });
-            document.getElementById('clock').innerText = `SYSTEM TIME: ${timeStr} // STATUS: CODING`;
+            document.getElementById('clock').innerText = `SYSTEM TIME: ${timeStr} // RIYADH, SAUDI ARABIA`;
         }
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Console Message
         console.log('%c⚠️ ENTERING SULTAN\'S UNIVERSE ⚠️', 'color: #00f5d4; font-size: 24px; font-weight: bold;');
-        console.log('%cTry typing "fps" to monitor performance.', 'color: #9b5de5; font-size: 16px;');
-
-        // Hidden FPS Counter (Type "fps")
-        const fpsCounter = document.getElementById('fps');
-        let fpsString = '';
-        let lastTime = performance.now();
-        let frames = 0;
-        
-        window.addEventListener('keydown', (e) => {
-            fpsString += e.key.toLowerCase();
-            if (fpsString.length > 3) fpsString = fpsString.slice(-3);
-            if (fpsString === 'fps') {
-                fpsCounter.classList.toggle('fps-visible');
-                fpsString = '';
-            }
-        });
-
-        // Animation Loop
-        const clock = new THREE.Clock();
-        function animate() {
-            requestAnimationFrame(animate);
-            const elapsed = clock.getElapsedTime();
-            particleMaterial.uniforms.uTime.value = elapsed;
-            
-            // Smooth mouse follow for shader
-            particleMaterial.uniforms.uMouse.value.x += (webglMouse.x - particleMaterial.uniforms.uMouse.value.x) * 0.05;
-            particleMaterial.uniforms.uMouse.value.y += (webglMouse.y - particleMaterial.uniforms.uMouse.value.y) * 0.05;
-
-            particles.rotation.y = elapsed * 0.05;
-            
-            // FPS Calculation
-            frames++;
-            const now = performance.now();
-            if (now >= lastTime + 1000) {
-                fpsCounter.innerText = `FPS: ${frames}`;
-                frames = 0;
-                lastTime = now;
-            }
-            
-            renderer.render(scene, camera);
-        }
-        animate();
     </script>
 </body>
 </html>
