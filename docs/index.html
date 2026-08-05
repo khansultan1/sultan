@@ -16,68 +16,33 @@
 
     <style>
         :root {
-            --bg: #050505;
-            --text: #ffffff;
-            --muted: rgba(255, 255, 255, 0.5);
-            --accent-blue: #0070f3;
-            --accent-purple: #9b5de5;
-            --accent-cyan: #00f5d4;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
+            --bg: #050505; --text: #ffffff; --muted: rgba(255, 255, 255, 0.5);
+            --accent-blue: #0070f3; --accent-purple: #9b5de5; --accent-cyan: #00f5d4;
+            --glass: rgba(255, 255, 255, 0.03); --border: rgba(255, 255, 255, 0.08);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        html, body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-
+        html, body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         ::selection { background: var(--accent-cyan); color: #000; }
 
         /* Custom Cursor */
         @media (hover: hover) and (pointer: fine) {
             html, body { cursor: none; }
-            .cursor-dot, .cursor-outline {
-                position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
-                border-radius: 50%; transform: translate(-50%, -50%);
-                transition: width 0.3s ease, height 0.3s ease, background 0.3s ease, border 0.3s ease;
-                mix-blend-mode: difference;
-            }
+            .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.3s ease, height 0.3s ease, background 0.3s ease, border 0.3s ease; mix-blend-mode: difference; }
             .cursor-dot { width: 6px; height: 6px; background: var(--accent-cyan); }
             .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.5); }
             .cursor-hover .cursor-outline { width: 80px; height: 80px; background: rgba(0, 245, 212, 0.1); border-color: transparent; }
         }
 
-        /* Noise Texture */
-        .noise {
-            position: fixed; inset: 0; z-index: 100; pointer-events: none;
-            opacity: 0.03; mix-blend-mode: overlay;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        /* Loader */
-        #loader {
-            position: fixed; inset: 0; z-index: 9000; background: #000;
-            display: flex; justify-content: center; align-items: center;
-            flex-direction: column; gap: 20px;
-        }
+        /* Noise & Loader */
+        .noise { position: fixed; inset: 0; z-index: 100; pointer-events: none; opacity: 0.03; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+        #loader { position: fixed; inset: 0; z-index: 9000; background: #000; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 20px; }
         .loader-text { font-family: 'JetBrains Mono'; font-size: 12px; color: var(--accent-cyan); letter-spacing: 4px; text-transform: uppercase; }
         .loader-bar { width: 200px; height: 2px; background: rgba(255,255,255,0.1); overflow: hidden; }
         .loader-fill { width: 0%; height: 100%; background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan); }
-
-        /* WebGL Canvas */
         #webgl-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; }
 
-        /* Navigation */
-        nav {
-            position: fixed; top: 0; left: 0; width: 100%; z-index: 50;
-            padding: 24px 48px; display: flex; justify-content: space-between; align-items: center;
-            background: linear-gradient(180deg, rgba(5,5,5,0.8) 0%, transparent 100%);
-            backdrop-filter: blur(5px);
-        }
+        /* Nav & Layout */
+        nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 50; padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(180deg, rgba(5,5,5,0.8) 0%, transparent 100%); backdrop-filter: blur(5px); }
         .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: -1px; }
         .logo span { color: var(--accent-cyan); }
         .nav-links { display: flex; gap: 32px; }
@@ -85,46 +50,43 @@
         .nav-links a:hover { color: var(--text); }
         .nav-cta { font-family: 'JetBrains Mono'; font-size: 11px; text-transform: uppercase; color: var(--bg); background: var(--accent-cyan); padding: 10px 20px; border-radius: 30px; text-decoration: none; transition: transform 0.3s; }
         .nav-cta:hover { transform: scale(1.05); }
-
-        /* Layout */
         .content-wrapper { position: relative; z-index: 2; }
         section { min-height: 100vh; padding: 120px 48px; display: flex; flex-direction: column; justify-content: center; position: relative; }
-        
         .hero-section { align-items: center; text-align: center; }
         .hero-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(48px, 12vw, 200px); line-height: 0.9; letter-spacing: -0.05em; opacity: 0; transform: translateY(40px); pointer-events: none; }
         .hero-subtitle { font-family: 'JetBrains Mono'; font-size: 14px; color: var(--accent-cyan); margin-top: 24px; opacity: 0; letter-spacing: 2px; text-transform: uppercase; pointer-events: none; }
-        
         .hero-btns { margin-top: 40px; display: flex; gap: 16px; opacity: 0; }
         .btn { padding: 16px 32px; border-radius: 40px; font-family: 'JetBrains Mono'; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: all 0.3s ease; border: none; cursor: none; }
         .btn-primary { background: var(--accent-cyan); color: var(--bg); }
         .btn-outline { border: 1px solid var(--border); color: var(--text); background: transparent; }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 245, 212, 0.2); }
 
-        /* Glass Cards */
+        /* Glass & Sections */
         .glass { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; padding: 32px; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border 0.4s; }
         .glass:hover { border-color: rgba(0, 245, 212, 0.3); transform: translateY(-5px); }
-
         .section-title { font-family: 'Syne', sans-serif; font-size: clamp(32px, 5vw, 64px); margin-bottom: 64px; font-weight: 600; }
         .section-num { color: var(--accent-cyan); font-family: 'JetBrains Mono'; font-size: 14px; display: block; margin-bottom: 12px; }
 
-        /* Skills Orbit & Grid */
-        .orbit-container { perspective: 1000px; height: 700px; position: relative; display: flex; justify-content: center; align-items: center; margin-bottom: 80px; }
-        .orbit-ring { position: absolute; border: 1px dashed rgba(255,255,255,0.1); border-radius: 50%; transform-style: preserve-3d; }
-        .skill-node { position: absolute; padding: 10px 18px; background: rgba(5,5,5,0.8); border: 1px solid var(--border); border-radius: 12px; font-family: 'JetBrains Mono'; font-size: 12px; backdrop-filter: blur(4px); box-shadow: 0 0 20px rgba(0,0,0,0.5); white-space: nowrap; }
-        
+        /* 3D Tech Orbit */
+        .orbit-wrapper { perspective: 1200px; height: 600px; display: flex; justify-content: center; align-items: center; margin-bottom: 80px; overflow: visible; }
+        .orbit-scene { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
+        .orbit-ring { position: absolute; top: 50%; left: 50%; transform-style: preserve-3d; }
+        .orbit-node { position: absolute; padding: 10px 20px; background: rgba(5,5,5,0.8); border: 1px solid var(--accent-cyan); border-radius: 8px; font-family: 'JetBrains Mono'; font-size: 13px; color: var(--text); box-shadow: 0 0 15px rgba(0, 245, 212, 0.2); white-space: nowrap; transform-origin: center; }
+        @keyframes orbit-rotate { from { transform: translate(-50%, -50%) rotateY(0deg) rotateX(15deg); } to { transform: translate(-50%, -50%) rotateY(360deg) rotateX(15deg); } }
+        @keyframes orbit-rotate-rev { from { transform: translate(-50%, -50%) rotateY(360deg) rotateX(-15deg); } to { transform: translate(-50%, -50%) rotateY(0deg) rotateX(-15deg); } }
+
+        /* Categorized Skills Grid */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
         .skill-category h3 { font-family: 'Syne'; font-size: 20px; margin-bottom: 16px; color: var(--accent-cyan); }
         .skill-list { list-style: none; }
         .skill-list li { color: var(--muted); font-size: 14px; margin-bottom: 12px; padding-left: 16px; position: relative; line-height: 1.5; }
         .skill-list li::before { content: '▹'; position: absolute; left: 0; color: var(--accent-purple); }
 
-        /* Timeline */
+        /* Timeline & Projects */
         .timeline-track { display: flex; flex-direction: column; gap: 48px; position: relative; padding-left: 40px; max-width: 800px; }
         .timeline-track::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, transparent, var(--accent-purple), transparent); }
         .timeline-item { position: relative; }
         .timeline-item::before { content: ''; position: absolute; left: -44px; top: 10px; width: 9px; height: 9px; background: var(--bg); border: 1px solid var(--accent-cyan); border-radius: 50%; box-shadow: 0 0 10px var(--accent-cyan); }
-
-        /* Projects Grid */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
         .project-card { height: 400px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
         .project-bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.4; transition: transform 0.6s ease, opacity 0.6s ease; }
@@ -144,52 +106,43 @@
         /* AI Chatbot */
         .chat-toggle-btn { position: fixed; bottom: 32px; right: 32px; width: 60px; height: 60px; background: var(--accent-cyan); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: none; z-index: 100; box-shadow: 0 0 20px rgba(0, 245, 212, 0.4); border: none; }
         .chat-toggle-btn svg { width: 24px; height: 24px; fill: var(--bg); }
-        
-        .chatbot-container { position: fixed; bottom: 110px; right: 32px; width: 380px; height: 500px; background: rgba(5, 5, 5, 0.9); border: 1px solid var(--accent-cyan); border-radius: 16px; backdrop-filter: blur(20px); z-index: 100; display: flex; flex-direction: column; transform: scale(0); transform-origin: bottom right; transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .chatbot-container { position: fixed; bottom: 110px; right: 32px; width: 380px; height: 500px; background: rgba(5, 5, 5, 0.95); border: 1px solid var(--accent-cyan); border-radius: 16px; backdrop-filter: blur(20px); z-index: 100; display: flex; flex-direction: column; transform: scale(0); transform-origin: bottom right; transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         .chatbot-visible { transform: scale(1); }
         .chat-header { padding: 16px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
         .chat-title { font-family: 'Syne'; font-size: 14px; color: var(--accent-cyan); }
         .chat-close { background: none; border: none; color: var(--muted); cursor: none; font-size: 16px; }
         .chat-messages { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-        .chat-message { max-width: 80%; padding: 10px 14px; border-radius: 12px; font-size: 13px; line-height: 1.4; }
+        .chat-message { max-width: 85%; padding: 12px 16px; border-radius: 12px; font-size: 13px; line-height: 1.5; }
         .user-msg { background: var(--accent-cyan); color: var(--bg); align-self: flex-end; }
         .bot-msg { background: rgba(255,255,255,0.05); color: var(--text); align-self: flex-start; border: 1px solid var(--border); }
+        .chat-suggestions { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px 12px; }
+        .chat-suggestion { background: rgba(0, 245, 212, 0.1); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); padding: 6px 12px; border-radius: 16px; font-size: 11px; cursor: none; font-family: 'JetBrains Mono'; transition: background 0.2s; }
+        .chat-suggestion:hover { background: rgba(0, 245, 212, 0.2); }
         .chat-input-area { padding: 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
         .chat-input { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; padding: 10px; color: var(--text); font-family: 'Inter'; outline: none; }
         .chat-send-btn { background: var(--accent-cyan); color: var(--bg); border: none; padding: 0 16px; border-radius: 8px; cursor: none; font-weight: bold; }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            nav { padding: 16px 24px; }
-            .nav-links { display: none; }
-            section { padding: 80px 24px; }
-            .orbit-container { height: 500px; transform: scale(0.7); }
-            .hero-btns { flex-direction: column; width: 100%; }
-            .btn { width: 100%; text-align: center; }
-            .chatbot-container { width: calc(100% - 32px); right: 16px; bottom: 90px; height: 60vh; }
+            nav { padding: 16px 24px; } .nav-links { display: none; } section { padding: 80px 24px; }
+            .orbit-wrapper { height: 400px; transform: scale(0.65); }
+            .hero-btns { flex-direction: column; width: 100%; } .btn { width: 100%; text-align: center; }
+            .chatbot-container { width: calc(100% - 32px); right: 16px; bottom: 90px; height: 70vh; }
             .chat-toggle-btn { right: 16px; bottom: 16px; }
         }
     </style>
 </head>
 <body>
-
-    <!-- Custom Cursor -->
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-outline" id="cursor-outline"></div>
-
-    <!-- Noise Overlay -->
     <div class="noise"></div>
 
-    <!-- Loader -->
     <div id="loader">
         <div class="loader-text">Initializing Universe</div>
         <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
     </div>
 
-    <!-- WebGL Canvas -->
     <canvas id="webgl-canvas"></canvas>
 
-    <!-- Navigation -->
     <nav>
         <div class="logo">SULTAN<span>.</span>KHAN</div>
         <div class="nav-links">
@@ -202,19 +155,15 @@
     </nav>
 
     <div class="content-wrapper">
-        
-        <!-- Hero -->
         <section class="hero-section" id="hero">
             <h1 class="hero-title" id="hero-title">SULTAN<br>KHAN</h1>
             <p class="hero-subtitle" id="hero-subtitle">Senior Software Developer // 8+ Years Experience // Riyadh, KSA</p>
-            
             <div class="hero-btns" id="hero-btns">
                 <a href="Sultan-Khan-Resume.pdf" download class="btn btn-primary">Download Resume</a>
                 <button class="btn btn-outline" id="open-chat-btn">Get In Touch</button>
             </div>
         </section>
 
-        <!-- About -->
         <section id="about">
             <span class="section-num">01 / IDENTITY</span>
             <h2 class="section-title">Engineering the Future.</h2>
@@ -228,19 +177,15 @@
             </div>
         </section>
 
-        <!-- Skills -->
         <section id="skills">
             <span class="section-num">02 / CAPABILITIES</span>
             <h2 class="section-title">The Tech Stack.</h2>
             
-            <!-- 3D Orbit -->
-            <div class="orbit-container" id="orbit-container">
-                <div class="orbit-ring" style="width: 300px; height: 300px; animation: spin 15s linear infinite;"></div>
-                <div class="orbit-ring" style="width: 500px; height: 500px; animation: spin 25s linear infinite reverse;"></div>
-                <div class="orbit-ring" style="width: 700px; height: 700px; animation: spin 35s linear infinite;"></div>
+            <!-- 3D CSS Orbit -->
+            <div class="orbit-wrapper">
+                <div class="orbit-scene" id="orbit-scene"></div>
             </div>
 
-            <!-- Categorized Skills -->
             <div class="skills-grid">
                 <div class="glass skill-category">
                     <h3>Mobile Technologies</h3>
@@ -274,7 +219,6 @@
             </div>
         </section>
 
-        <!-- Experience -->
         <section id="experience">
             <span class="section-num">03 / TRAJECTORY</span>
             <h2 class="section-title">Career Portals.</h2>
@@ -283,13 +227,13 @@
                     <span style="color: var(--accent-cyan); font-family: 'JetBrains Mono'; font-size: 12px;">MAR 2019 — PRESENT</span>
                     <h3 style="font-family: 'Syne'; font-size: 24px; margin: 8px 0;">Senior Software Developer</h3>
                     <p style="color: var(--muted); margin-bottom: 8px;">Cloud Solutions</p>
-                    <p style="color: var(--muted);">Leading mobile application development for major healthcare and enterprise systems. Architecting scalable solutions and optimizing cross-platform delivery.</p>
+                    <p style="color: var(--muted);">Leading mobile application development for major healthcare and enterprise systems.</p>
                 </div>
                 <div class="timeline-item glass">
                     <span style="color: var(--accent-purple); font-family: 'JetBrains Mono'; font-size: 12px;">MAR 2018 — MAR 2019</span>
                     <h3 style="font-family: 'Syne'; font-size: 24px; margin: 8px 0;">Software Engineer</h3>
                     <p style="color: var(--muted); margin-bottom: 8px;">Dure Technologies Pvt Ltd</p>
-                    <p style="color: var(--muted);">Developed interactive web portals and contributed to large-scale frontend architecture projects.</p>
+                    <p style="color: var(--muted);">Developed interactive web portals and contributed to large-scale frontend architecture.</p>
                 </div>
                 <div class="timeline-item glass">
                     <span style="color: var(--accent-cyan); font-family: 'JetBrains Mono'; font-size: 12px;">APR 2017 — MAR 2018</span>
@@ -301,100 +245,28 @@
                     <span style="color: var(--accent-purple); font-family: 'JetBrains Mono'; font-size: 12px;">MAR 2015 — APR 2017</span>
                     <h3 style="font-family: 'Syne'; font-size: 24px; margin: 8px 0;">Associate (JavaScript)</h3>
                     <p style="color: var(--muted); margin-bottom: 8px;">Sportz Interactive Pvt. Ltd</p>
-                    <p style="color: var(--muted);">Built dynamic sports infographics and real-time data visualizations using JavaScript and Angular.</p>
+                    <p style="color: var(--muted);">Built dynamic sports infographics and real-time data visualizations.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Projects -->
         <section id="projects">
             <span class="section-num">04 / CREATIONS</span>
             <h2 class="section-title">Major Projects.</h2>
             <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card glass">
-                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="project-content">
-                        <h3 class="project-title">Dr Sulaiman Al Habib App</h3>
-                        <div class="project-tags"><span class="tag">Flutter</span><span class="tag">Healthcare</span><span class="tag">2M+ Users</span></div>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="project-card glass">
-                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1642790106117-e829e14a795f?q=80&w=2128&auto=format&fit=crop');"></div>
-                    <div class="project-content">
-                        <h3 class="project-title">Al Habib Mohemm (E-Services)</h3>
-                        <div class="project-tags"><span class="tag">Flutter</span><span class="tag">Enterprise</span><span class="tag">15k+ Users</span></div>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="project-card glass">
-                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="project-content">
-                        <h3 class="project-title">Doctor Application</h3>
-                        <div class="project-tags"><span class="tag">Flutter</span><span class="tag">Physician</span><span class="tag">REST APIs</span></div>
-                    </div>
-                </div>
-                <!-- Project 4 -->
-                <div class="project-card glass">
-                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="project-content">
-                        <h3 class="project-title">Ibadah App</h3>
-                        <div class="project-tags"><span class="tag">Flutter</span><span class="tag">Non-Profit</span><span class="tag">2024</span></div>
-                    </div>
-                </div>
-                <!-- Project 5 -->
-                <div class="project-card glass">
-                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="project-content">
-                        <h3 class="project-title">Hypespots</h3>
-                        <div class="project-tags"><span class="tag">IONIC 3</span><span class="tag">Angular 5</span><span class="tag">Social</span></div>
-                    </div>
-                </div>
-                <!-- Project 6 -->
-                <div class="project-card glass">
-                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="project-content">
-                        <h3 class="project-title">Worldline Merchant Portal</h3>
-                        <div class="project-tags"><span class="tag">Angular</span><span class="tag">Fintech</span><span class="tag">Web Portal</span></div>
-                    </div>
-                </div>
-                <!-- Project 7 -->
-                <div class="project-card glass">
-                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="project-content">
-                        <h3 class="project-title">RTM Mealtime Monitoring</h3>
-                        <div class="project-tags"><span class="tag">Access Health</span><span class="tag">Web App</span><span class="tag">UI/UX</span></div>
-                    </div>
-                </div>
-                <!-- Project 8 -->
-                <div class="project-card glass">
-                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="project-content">
-                        <h3 class="project-title">Race Lance (Handicapping)</h3>
-                        <div class="project-tags"><span class="tag">JavaScript</span><span class="tag">Data Viz</span><span class="tag">Sports</span></div>
-                    </div>
-                </div>
-                <!-- Project 9 -->
-                <div class="project-card glass">
-                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="project-content">
-                        <h3 class="project-title">Infographics Engine</h3>
-                        <div class="project-tags"><span class="tag">Angular</span><span class="tag">Real-time</span><span class="tag">Engine</span></div>
-                    </div>
-                </div>
-                <!-- Project 10 -->
-                <div class="project-card glass">
-                    <div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="project-content">
-                        <h3 class="project-title">Worldline On The Go</h3>
-                        <div class="project-tags"><span class="tag">IONIC 1</span><span class="tag">AngularJS</span><span class="tag">Mobile</span></div>
-                    </div>
-                </div>
+                <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?q=80&w=2070&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Dr Sulaiman Al Habib App</h3><div class="project-tags"><span class="tag">Flutter</span><span class="tag">Healthcare</span></div></div></div>
+                <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1642790106117-e829e14a795f?q=80&w=2128&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Al Habib Mohemm (E-Services)</h3><div class="project-tags"><span class="tag">Flutter</span><span class="tag">Enterprise</span></div></div></div>
+                <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Doctor Application</h3><div class="project-tags"><span class="tag">Flutter</span><span class="tag">Physician</span></div></div></div>
+                <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Ibadah App</h3><div class="project-tags"><span class="tag">Flutter</span><span class="tag">Non-Profit</span></div></div></div>
+                <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=2070&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Hypespots</h3><div class="project-tags"><span class="tag">IONIC 3</span><span class="tag">Angular 5</span></div></div></div>
+                <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2070&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Worldline Merchant Portal</h3><div class="project-tags"><span class="tag">Angular</span><span class="tag">Fintech</span></div></div></div>
+                <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">RTM Mealtime Monitoring</h3><div class="project-tags"><span class="tag">Web App</span><span class="tag">UI/UX</span></div></div></div>
+                <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Race Lance (Handicapping)</h3><div class="project-tags"><span class="tag">JavaScript</span><span class="tag">Data Viz</span></div></div></div>
+                <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Infographics Engine</h3><div class="project-tags"><span class="tag">Angular</span><span class="tag">Real-time</span></div></div></div>
+                <div class="project-card glass"><div class="project-bg" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=2070&auto=format&fit=crop');"></div><div class="project-content"><h3 class="project-title">Worldline On The Go</h3><div class="project-tags"><span class="tag">IONIC 1</span><span class="tag">AngularJS</span></div></div></div>
             </div>
         </section>
 
-        <!-- Footer -->
         <footer id="contact">
             <span class="section-num">05 / CONTACT</span>
             <h2 class="section-title" style="margin-bottom: 32px;">Let's build the impossible.</h2>
@@ -403,24 +275,26 @@
                 <a href="tel:+966567184134" class="contact-item">+966 56 718 4134</a>
                 <a href="https://github.com/khansultan1" target="_blank" class="contact-item">GitHub</a>
                 <a href="https://stackoverflow.com/users/4252231/sultan-khan" target="_blank" class="contact-item">StackOverflow</a>
-                <a href="https://medium.com/@khansultan1" target="_blank" class="contact-item">Medium</a>
             </div>
             <div class="footer-clock" id="clock">LOADING SYSTEM TIME...</div>
         </footer>
     </div>
 
-    <!-- AI Chatbot UI -->
-    <button class="chat-toggle-btn" id="chat-toggle-btn">
-        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-    </button>
-
+    <!-- Local JSON Chatbot UI -->
+    <button class="chat-toggle-btn" id="chat-toggle-btn"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></button>
     <div class="chatbot-container" id="chatbot-container">
         <div class="chat-header">
-            <div class="chat-title">AI Assistant // Sultan's Universe</div>
+            <div class="chat-title">Resume Assistant // Local AI</div>
             <button class="chat-close" id="chat-close">✕</button>
         </div>
         <div class="chat-messages" id="chat-messages">
-            <div class="chat-message bot-msg">Hello! I am Sultan's AI Assistant. Ask me about his experience, skills, or projects!</div>
+            <div class="chat-message bot-msg">Hello! I am a local assistant trained on Sultan's PDF resume. Ask me anything, or try a suggestion below!</div>
+        </div>
+        <div class="chat-suggestions">
+            <button class="chat-suggestion" onclick="sendSuggestion('Experience')">Experience</button>
+            <button class="chat-suggestion" onclick="sendSuggestion('Skills')">Skills</button>
+            <button class="chat-suggestion" onclick="sendSuggestion('Projects')">Projects</button>
+            <button class="chat-suggestion" onclick="sendSuggestion('Contact')">Contact</button>
         </div>
         <div class="chat-input-area">
             <input type="text" class="chat-input" id="chat-input" placeholder="Type your message..." autocomplete="off">
@@ -428,7 +302,6 @@
         </div>
     </div>
 
-    <!-- Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -436,13 +309,12 @@
 
     <script>
         // ==========================================
-        // 1. SETUP & INITIALIZATION
+        // 1. INITIALIZATION & CURSOR
         // ==========================================
         gsap.registerPlugin(ScrollTrigger);
         const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        // Custom Cursor
         const dot = document.getElementById('cursor-dot');
         const outline = document.getElementById('cursor-outline');
         let outlineX = mouse.x, outlineY = mouse.y;
@@ -465,7 +337,6 @@
             el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
         });
 
-        // Smooth Scroll
         let lenis;
         if (!prefersReducedMotion && typeof Lenis !== 'undefined') {
             lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
@@ -478,10 +349,7 @@
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const target = document.querySelector(link.getAttribute('href'));
-                if (target) {
-                    if (lenis) lenis.scrollTo(target, { offset: -50 });
-                    else target.scrollIntoView({ behavior: 'smooth' });
-                }
+                if (target) { if (lenis) lenis.scrollTo(target, { offset: -50 }); else target.scrollIntoView({ behavior: 'smooth' }); }
             });
         });
 
@@ -491,14 +359,11 @@
         const loaderFill = document.getElementById('loader-fill');
         const loader = document.getElementById('loader');
         const tl = gsap.timeline();
-
         gsap.to(loaderFill, { width: '100%', duration: 2, ease: 'power2.inOut', onComplete: initScene });
 
         function initScene() {
-            let webglActive = false;
             try {
                 if (typeof THREE === 'undefined') throw new Error("Three.js not loaded");
-                
                 const canvas = document.getElementById('webgl-canvas');
                 const scene = new THREE.Scene();
                 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -551,17 +416,7 @@
 
                 const particleMaterial = new THREE.ShaderMaterial({
                     uniforms: { uTime: { value: 0 }, uMouse: { value: new THREE.Vector2(0, 0) }, uProgress: { value: 0 } },
-                    vertexShader: `
-                        attribute vec3 aTarget; attribute vec3 aColor; uniform float uTime; uniform vec2 uMouse; uniform float uProgress; varying vec3 vColor;
-                        void main() {
-                            vColor = aColor; vec3 pos = mix(position, aTarget, uProgress);
-                            vec2 dir = uMouse - vec2(pos.x, pos.y); float dist = length(dir);
-                            if (dist < 10.0) { pos.x -= dir.x * (1.0 - dist/10.0) * 2.0; pos.y -= dir.y * (1.0 - dist/10.0) * 2.0; }
-                            pos.z += sin(uTime + pos.x * 0.5) * 0.5;
-                            vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-                            gl_PointSize = 3.0 * (300.0 / -mvPosition.z); gl_Position = projectionMatrix * mvPosition;
-                        }
-                    `,
+                    vertexShader: `attribute vec3 aTarget; attribute vec3 aColor; uniform float uTime; uniform vec2 uMouse; uniform float uProgress; varying vec3 vColor; void main() { vColor = aColor; vec3 pos = mix(position, aTarget, uProgress); vec2 dir = uMouse - vec2(pos.x, pos.y); float dist = length(dir); if (dist < 10.0) { pos.x -= dir.x * (1.0 - dist/10.0) * 2.0; pos.y -= dir.y * (1.0 - dist/10.0) * 2.0; } pos.z += sin(uTime + pos.x * 0.5) * 0.5; vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0); gl_PointSize = 3.0 * (300.0 / -mvPosition.z); gl_Position = projectionMatrix * mvPosition; }`,
                     fragmentShader: `varying vec3 vColor; void main() { float dist = length(gl_PointCoord - vec2(0.5)); if (dist > 0.5) discard; gl_FragColor = vec4(vColor, 1.0 - dist * 2.0); }`,
                     transparent: true, blending: THREE.AdditiveBlending, depthWrite: false
                 });
@@ -570,20 +425,10 @@
                 scene.add(particles);
 
                 const webglMouse = new THREE.Vector2();
-                window.addEventListener('mousemove', e => {
-                    webglMouse.x = ((e.clientX / window.innerWidth) - 0.5) * 40;
-                    webglMouse.y = -((e.clientY / window.innerHeight) - 0.5) * 20;
-                });
+                window.addEventListener('mousemove', e => { webglMouse.x = ((e.clientX / window.innerWidth) - 0.5) * 40; webglMouse.y = -((e.clientY / window.innerHeight) - 0.5) * 20; });
+                window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
 
-                window.addEventListener('resize', () => {
-                    camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix();
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-                });
-
-                ScrollTrigger.create({
-                    trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true,
-                    onUpdate: (self) => { particleMaterial.uniforms.uProgress.value = 1 - self.progress; camera.position.z = 50 + self.progress * 30; }
-                });
+                ScrollTrigger.create({ trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true, onUpdate: (self) => { particleMaterial.uniforms.uProgress.value = 1 - self.progress; camera.position.z = 50 + self.progress * 30; } });
 
                 const clock = new THREE.Clock();
                 function animate() {
@@ -593,7 +438,7 @@
                     particleMaterial.uniforms.uMouse.value.y += (webglMouse.y - particleMaterial.uniforms.uMouse.value.y) * 0.05;
                     particles.rotation.y = elapsed * 0.05; renderer.render(scene, camera);
                 }
-                animate(); webglActive = true;
+                animate();
                 
                 tl.to(loader, { opacity: 0, duration: 0.8, pointerEvents: 'none' });
                 tl.to(particleMaterial.uniforms.uProgress, { value: 1, duration: 2.5, ease: 'power3.out' }, '-=0.4');
@@ -611,7 +456,6 @@
             }
         }
 
-        // Scroll Animations
         gsap.utils.toArray('section').forEach(section => {
             gsap.from(section.querySelectorAll('.glass, .section-title, .section-num'), {
                 opacity: 0, y: 60, duration: 1, stagger: 0.1, ease: 'power3.out',
@@ -620,43 +464,40 @@
         });
 
         // ==========================================
-        // 3. SKILLS ORBIT (25+ Capabilities)
+        // 3. HIGH-END 3D TECH ORBIT (25 SKILLS)
         // ==========================================
-        const skills = [
-            'Dart', 'Flutter', 'Firebase', 'GraphQL', 'REST', 
-            'Riverpod', 'Bloc', 'GetX', 'Provider', 'Vue JS', 
-            'Angular', 'React', 'JavaScript', 'TypeScript', 'HTML5', 
-            'CSS3', 'NodeJS', 'MongoDB', 'MySQL', 'PHP', 
-            'SQLite', 'Hive', 'GitHub', 'CI/CD', 'Python'
+        const skills = ['Dart', 'Flutter', 'Firebase', 'GraphQL', 'REST', 'Riverpod', 'Bloc', 'GetX', 'Provider', 'Vue JS', 'Angular', 'React', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'NodeJS', 'MongoDB', 'MySQL', 'PHP', 'SQLite', 'Hive', 'GitHub', 'CI/CD', 'Python'];
+        const orbitScene = document.getElementById('orbit-scene');
+        
+        // Create 3 rings with different radii and speeds
+        const rings = [
+            { count: 8, radius: 140, duration: 18, reverse: false },
+            { count: 8, radius: 220, duration: 28, reverse: true },
+            { count: 9, radius: 300, duration: 38, reverse: false }
         ];
-        const orbitContainer = document.getElementById('orbit-container');
-        // Expanding to 3 rings to accommodate 25 items
-        const orbitRadius = [150, 250, 350]; 
-        const orbitDurations = [18, 28, 38];
 
-        skills.forEach((skill, i) => {
-            const node = document.createElement('div');
-            node.className = 'skill-node'; 
-            node.innerText = skill;
-            orbitContainer.appendChild(node);
+        let skillIndex = 0;
+        rings.forEach((ring, ringIdx) => {
+            const ringEl = document.createElement('div');
+            ringEl.className = 'orbit-ring';
+            ringEl.style.animation = `${ring.reverse ? 'orbit-rotate-rev' : 'orbit-rotate'} ${ring.duration}s linear infinite`;
             
-            const ringIndex = i % 3;
-            const radius = orbitRadius[ringIndex];
-            const duration = orbitDurations[ringIndex];
-            const startAngle = (i / skills.length) * Math.PI * 2;
-            
-            gsap.to(node, {
-                duration: duration, repeat: -1, ease: "none",
-                modifiers: {
-                    x: () => Math.cos(startAngle + (performance.now() / 1000) * (Math.PI * 2 / duration)) * radius,
-                    y: () => Math.sin(startAngle + (performance.now() / 1000) * (Math.PI * 2 / duration)) * radius * 0.3, // Elliptical for 3D feel
-                    z: () => Math.sin(startAngle + (performance.now() / 1000) * (Math.PI * 2 / duration)) * radius,
-                }
-            });
+            for (let i = 0; i < ring.count; i++) {
+                if (skillIndex >= skills.length) break;
+                const angle = (360 / ring.count) * i;
+                const node = document.createElement('div');
+                node.className = 'orbit-node';
+                node.innerText = skills[skillIndex];
+                // Position around the ring using 3D transforms
+                node.style.transform = `rotateY(${angle}deg) translateZ(${ring.radius}px)`;
+                ringEl.appendChild(node);
+                skillIndex++;
+            }
+            orbitScene.appendChild(ringEl);
         });
 
         // ==========================================
-        // 4. AI CHATBOT (GLM API)
+        // 4. LOCAL JSON CHATBOT (No API)
         // ==========================================
         const chatToggleBtn = document.getElementById('chat-toggle-btn');
         const chatbotContainer = document.getElementById('chatbot-container');
@@ -679,70 +520,54 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         };
 
-        // SYSTEM PROMPT: Instructs the AI on how to behave
-        const systemPrompt = `
-            You are an AI assistant representing Sultan Khan, a Senior Software Developer based in Riyadh, Saudi Arabia.
-            Sultan has 8+ years of experience in Mobile (Flutter, Dart, Provider, Riverpod, Bloc, GetX), Frontend (React, Vue, Angular, JS/TS), and Backend (NodeJS, MongoDB, REST, GraphQL).
-            He has worked extensively in healthcare and sports sectors. Major projects include Dr Sulaiman Al Habib App, Al Habib Mohemm, Doctor App, Ibadah App, Hypespots, and Worldline Merchant Portal.
-            Answer questions professionally, concisely, and promote Sultan's skills. If asked about hiring or email, provide khansultan1@gmail.com.
-        `;
+        // JSON Dataset extracted from PDF
+        const resumeData = {
+            experience: "Sultan has 8+ years of experience. He is currently a Senior Software Developer at Cloud Solutions (Mar 2019 - Present). Previously, he worked at Dure Technologies (2018-2019), NSE.IT (2017-2018), and Sportz Interactive (2015-2017).",
+            skills: "He specializes in Mobile Tech (Flutter, Dart, Provider, Riverpod, Bloc, GetX), Frontend (React, Vue, Angular, JS/TS, HTML5, CSS3), and Backend/Data (NodeJS, MongoDB, MySQL, PHP, REST, GraphQL, CI/CD).",
+            projects: "Major projects include the Dr Sulaiman Al Habib Patient App, Al Habib Mohemm Employee App, Doctor Application, Ibadah App, Hypespots, and the Worldline Merchant Portal.",
+            contact: "You can contact Sultan at khansultan1@gmail.com or +966 56 718 4134. He is based in Riyadh, Saudi Arabia.",
+            education: "He holds a Master's in Computer Science from Lovely Professional University (2015) and a Bachelor's in Arts from VBSPU (2013).",
+            default: "I am a local AI trained on Sultan's resume. You can ask me about his 'experience', 'skills', 'projects', 'education', or 'contact' info."
+        };
 
-        let chatHistory = [{ role: "system", content: systemPrompt }];
+        function getLocalResponse(query) {
+            const q = query.toLowerCase();
+            if (q.includes('experience') || q.includes('work') || q.includes('job') || q.includes('company')) return resumeData.experience;
+            if (q.includes('skill') || q.includes('tech') || q.includes('stack') || q.includes('flutter') || q.includes('dart')) return resumeData.skills;
+            if (q.includes('project') || q.includes('app') || q.includes('built') || q.includes('portfolio')) return resumeData.projects;
+            if (q.includes('contact') || q.includes('email') || q.includes('hire') || q.includes('phone') || q.includes('reach')) return resumeData.contact;
+            if (q.includes('education') || q.includes('degree') || q.includes('study') || q.includes('university')) return resumeData.education;
+            return resumeData.default;
+        }
 
-        const sendChatMessage = async () => {
+        function sendSuggestion(text) {
+            chatInput.value = text;
+            sendChatMessage();
+        }
+
+        const sendChatMessage = () => {
             const message = chatInput.value.trim();
             if (!message) return;
 
             addMessage(message, 'user');
-            chatHistory.push({ role: "user", content: message });
             chatInput.value = '';
             
-            // Typing indicator
+            // Simulate "thinking" delay for natural feel
             const typingIndicator = document.createElement('div');
             typingIndicator.classList.add('chat-message', 'bot-msg');
-            typingIndicator.innerText = 'Thinking...';
+            typingIndicator.innerText = 'Scanning resume...';
             chatMessages.appendChild(typingIndicator);
 
-            // === GLM API CONFIGURATION ===
-            // Replace "YOUR_GLM_API_KEY_HERE" with your actual Zhipu AI / GLM API Key
-            const GLM_API_KEY = "YOUR_GLM_API_KEY_HERE"; 
-            const API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions";
-
-            try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${GLM_API_KEY}`
-                    },
-                    body: JSON.stringify({
-                        model: "glm-4", // or glm-3-turbo
-                        messages: chatHistory,
-                        temperature: 0.7
-                    })
-                });
-
+            setTimeout(() => {
                 chatMessages.removeChild(typingIndicator);
-
-                if (!response.ok) throw new Error("API request failed");
-                
-                const data = await response.json();
-                const botReply = data.choices[0].message.content;
-                
+                const botReply = getLocalResponse(message);
                 addMessage(botReply, 'bot');
-                chatHistory.push({ role: "assistant", content: botReply });
-
-            } catch (error) {
-                chatMessages.removeChild(typingIndicator);
-                addMessage("I'm currently in demo mode. Add your GLM API key to enable full AI responses. For direct contact, email khansultan1@gmail.com.", 'bot');
-                console.error("GLM API Error (Expected if key is missing):", error);
-            }
+            }, 600);
         };
 
         chatSendBtn.addEventListener('click', sendChatMessage);
         chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendChatMessage(); });
 
-        // Live Clock
         function updateClock() {
             const now = new Date();
             const timeStr = now.toLocaleTimeString('en-US', { hour12: false });
@@ -750,8 +575,6 @@
         }
         setInterval(updateClock, 1000);
         updateClock();
-
-        console.log('%c⚠️ ENTERING SULTAN\'S UNIVERSE ⚠️', 'color: #00f5d4; font-size: 24px; font-weight: bold;');
     </script>
 </body>
 </html>
