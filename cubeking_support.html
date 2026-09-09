@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Official Customer Support and Help Center for CubeKing 3D on iOS and Android.">
+  <title>CubeKing 3D — Support & Help Center</title>
+  <link rel="icon" type="image/png" href="icon.png">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card-bg: rgba(26, 33, 53, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #00e5ff;
+      --primary: #5b5fff;
+      --gold: #ffd54f;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(circle at 15% 10%, rgba(91, 95, 255, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(0, 229, 255, 0.12) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    header {
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .app-icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(0, 229, 255, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #ffffff 40%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-banner {
+      background: linear-gradient(135deg, rgba(91, 95, 255, 0.25), rgba(0, 229, 255, 0.15));
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.75rem 2rem;
+      margin: 0 auto 2.5rem;
+      max-width: 800px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+    }
+
+    .contact-banner h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .contact-banner p {
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #00e5ff, #5b5fff);
+      color: #0b1020;
+      font-weight: 700;
+      padding: 0.85rem 1.75rem;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 18px rgba(0, 229, 255, 0.35);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 229, 255, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      box-shadow: none;
+      border: 1px solid var(--card-border);
+      margin-left: 0.75rem;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.16);
+      transform: translateY(-2px);
+    }
+
+    main {
+      flex: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+      width: 100%;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 2rem 0 1.25rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .faq-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(10px);
+      transition: border-color 0.2s;
+    }
+
+    .faq-card:hover {
+      border-color: rgba(0, 229, 255, 0.3);
+    }
+
+    .faq-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .faq-card p, .faq-card ul {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .faq-card ul {
+      padding-left: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .faq-card li {
+      margin-bottom: 0.35rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      background: rgba(11, 16, 32, 0.8);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 0.75rem;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .contact-banner { padding: 1.25rem; }
+      .btn { width: 100%; justify-content: center; margin: 0.35rem 0; }
+      .btn-secondary { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="icon.png" alt="CubeKing 3D Icon" class="app-icon">
+    <h1>CubeKing 3D</h1>
+    <p class="subtitle">Official Support & Customer Care</p>
+    <div class="contact-banner">
+      <h2>Need Help or Have Questions?</h2>
+      <p>Our support team is here to assist you with any questions, bug reports, or feature requests. We typically respond within 24 hours.</p>
+      <a href="mailto:support@cubeking3d.com?subject=CubeKing%203D%20Support%20Request" class="btn">
+        ✉️ Contact Support
+      </a>
+      <a href="privacy.html" class="btn btn-secondary">
+        🔒 Privacy Policy
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+
+    <div class="faq-card">
+      <h3>How do I restore my Pro purchase?</h3>
+      <p>If you previously upgraded to Pro and reinstalled the app or switched devices:</p>
+      <ul>
+        <li>Open <strong>CubeKing 3D</strong> on your Apple device.</li>
+        <li>Tap the <strong>Settings</strong> icon (⚙️) on the top right.</li>
+        <li>Scroll to the <strong>Subscription</strong> section and tap <strong>Restore Purchases</strong>.</li>
+        <li>Your purchase will be verified with the App Store and Pro will be re-activated immediately for free.</li>
+      </ul>
+    </div>
+
+    <div class="faq-card">
+      <h3>How does the 3D Camera Cube Scanner work?</h3>
+      <p>The AI Camera Scanner reads the colors on each face of your physical Rubik's Cube to compute the optimal step-by-step solution:</p>
+      <ul>
+        <li>Hold your 3x3 cube steady inside good, uniform lighting (avoid strong shadows or glares).</li>
+        <li>Align the face within the 3x3 on-screen grid.</li>
+        <li>Scan all 6 faces following the on-screen orientation prompts (White, Green, Yellow, Blue, Orange, Red).</li>
+        <li>Once all 6 faces are captured and validated, tap <strong>Solve</strong> to get 3D interactive move instructions!</li>
+      </ul>
+    </div>
+
+    <div class="faq-card">
+      <h3>Supported Devices & Requirements</h3>
+      <p><strong>CubeKing 3D</strong> is designed for high performance and runs smoothly on:</p>
+      <ul>
+        <li><strong>iOS / iPadOS:</strong> Requires iOS 15.0 or later (compatible with iPhone, iPad, and iPod touch).</li>
+        <li><strong>Apple Silicon Mac:</strong> macOS 12.0 or later with M1 chip or newer.</li>
+        <li><strong>Android:</strong> Android 6.0 (API 23) and newer, with full Android 15 edge-to-edge support.</li>
+      </ul>
+    </div>
+
+    <div class="faq-card">
+      <h3>How do I report a bug or request a feature?</h3>
+      <p>Please email our support team directly at <a href="mailto:support@cubeking3d.com?subject=CubeKing%203D%20Feedback" style="color: var(--accent);">support@cubeking3d.com</a>. To help us resolve bugs quickly, please include:</p>
+      <ul>
+        <li>Your device model (e.g. iPhone 15 Pro, iPad Air).</li>
+        <li>Your iOS version.</li>
+        <li>A brief description of what happened or a screenshot.</li>
+      </ul>
+    </div>
+
+    <div class="faq-card">
+      <h3>Can I play offline?</h3>
+      <p>Yes! All cube puzzles (2×2, 3×3, 4×4, 5×5), offline solving algorithms, practice timers, and visual themes work completely offline without requiring an active internet connection.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 CubeKing 3D. All rights reserved.</p>
+    <p style="margin-top: 0.5rem;">
+      <a href="index.html">Support</a> • 
+      <a href="privacy.html">Privacy Policy</a> • 
+      <a href="mailto:support@cubeking3d.com">Email Support</a>
+    </p>
+  </footer>
+
+</body>
+</html>
